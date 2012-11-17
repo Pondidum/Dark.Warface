@@ -4,9 +4,11 @@ local spellMonitor = {
 	
 	new = function(spellName)
 
-		local this = setmetatable({}, ns.targetMeta)
+		local this = {}
+		setmetatable(this, ns.targetMeta)
 		
-		this.texture  = GetSpellTexture(spellName)
+		this.name = spellName
+		this.texture = GetSpellTexture(spellName)
 
 		this.update = function(self)
 
@@ -29,7 +31,7 @@ local spellMonitor = {
 
 				local start, duration, enable, charges, maxCharges = GetSpellCooldown(spellName)
 
-				self.start = starts
+				self.start = start
 				self.duration = duration
 				self.stacks = charges
 				self.maxStacks = maxCharges
