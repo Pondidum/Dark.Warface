@@ -1,9 +1,16 @@
 local addon, ns = ...
 
-local initialise = function()
+local init = function()
 
-	ns.moniotrs = {}
+	local spellcd = ns.monitors["totem"].new(1)
+
+	spellcd:addListener("dev", function(cd) print(cd.name) end)
+
+	ns.TestSpell = spellcd
+	
+
+	Dark.warface = ns
 
 end
 
-initialise()
+init()

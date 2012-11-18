@@ -1,11 +1,16 @@
-##
-##
-##
-##
+## Interface: 50001
+## Title: Dark.Warface
+## Author: Darkend / Singularity / Zenedar / EU
+## Version: 0.0.1
+## Notes: Aura tracker
+## RequiredDeps: Dark.Core
+
+bootstrap.lua
+monitor.lua
+
+monitors\itemMonitor.lua
+monitors\macroMonitor.lua
+monitors\spellMonitor.lua
+monitors\totemMonitor.lua
 
 initialise.lua
-monitor.lua
-monitors\itemmonitor.lua
-monitors\macromonitor.lua
-monitors\spellmonitor.lua
-monitors\totemmonitor.lua
