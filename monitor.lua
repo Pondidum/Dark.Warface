@@ -1,13 +1,16 @@
 local addon, ns = ...
+local eventStore = Dark.core.events
 
 local target = {
 	
+	name = "",
 	start = 0,
 	duration = 0,
 	stacks = 0,
 	maxStacks = 0,	
 	mode = "NONE",		--NONE, ACTIVE, INACTIVE
 	texture = nil,
+	listeners = {},
 
 	setCooldown = function(self, cooldownFrame)
 
@@ -17,7 +20,7 @@ local target = {
 
 	setAura = function(self, auraFrame)
 
-		CooldownFrame_SetTimer(cooldownFrame, self.start, self.duration, 1, self.stacks, self.maxStacks)
+		CooldownFrame_SetTimer(auraFrame, self.start, self.duration, 1, self.stacks, self.maxStacks)
 
 	end,
 
@@ -31,14 +34,28 @@ local target = {
 
 	end,
 
+	addListener = function(self, key, action)
+
+		self.listeners[key] = action
+
+	end,
+
+	updated = function(self)
+
+		for key, action in pairs(self.listeners) do
+			action(self)
+		end
+
+	end,
+
 	setTexture = function(self, texture)
 
 		texture:SetTexture(self.texture)
 
 	end,
 
-	update = function (self)
-		self:reset()
+	onEvent = function(self, event, action)
+		eventStore.register(event, nil, action)
 	end,
 
 	reset = function(self) 
@@ -49,6 +66,19 @@ local target = {
 		self.maxStacks = 0	
 		self.mode = "NONE"
 		self.texture = nil
+
+	end,
+
+	report = function(self)
+
+		print(string.format("%s (%s) Start: %d, Duration: %d, Stacks: %d, Texture: %s", 
+			self.name, 
+			self.mode,
+			self.start, 
+			self.duration, 
+			self.stacks, 
+			self.texture
+			))
 
 	end,
 

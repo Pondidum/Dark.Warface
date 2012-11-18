@@ -6,8 +6,12 @@ local macroMonitor = {
 
 		local this = setmetatable({}, ns.targetMeta)
 	
-		this.update = function(self)
+		this.name = macroName
 
+		local update = function()
+
+			local current = {start = this.start, duration = this.duration, stacks = this.stacks, mode = this.mode}
+			
 			local spellName = GetMacroSpell(macroName)
 			local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura("player", spellName)
 
@@ -15,29 +19,48 @@ local macroMonitor = {
 
 			if auraName then
 				
-				self.mode = "ACTIVE"
+				this.mode = "ACTIVE"
 
 				local start = auraExpires - auraDuration
 
-				self.start = start
-				self.duration = auraDuration
-				self.stacks = auraCount
-				self.maxStacks = auraCount
+				this.start = start
+				this.duration = auraDuration
+				this.stacks = auraCount
+				this.maxStacks = auraCount
 					
 			else
 				
-				self.mode = "INACTIVE"
+				this.mode = "INACTIVE"
 
 				local start, duration, enable, charges, maxCharges = GetSpellCooldown(spellName)
 
-				self.start = start
-				self.duration = duration
-				self.stacks = charges
-				self.maxStacks = maxCharges
+				this.start = start
+				this.duration = duration
+				this.stacks = charges
+				this.maxStacks = maxCharges
 
 			end 
 
+			for key, state in pairs(current) do
+				if current[key] ~= this[key] then
+					this:updated()
+					break
+				end
+			end
+
 		end
+
+		local macrosUpdated = function()
+
+			local spellName = GetMacroSpell(macroName)
+			this.texture  = GetSpellTexture(spellName)
+
+		end
+
+		this:onEvent("ACTIONBAR_UPDATE_COOLDOWN", update)
+		this:onEvent("SPELL_UPDATE_USABLE", update)
+
+		this:onEvent("UPDATE_MACROS", macrosUpdated)
 
 		return this
 

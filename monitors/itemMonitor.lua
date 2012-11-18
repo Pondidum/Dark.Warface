@@ -2,43 +2,54 @@ local addon, ns = ...
 
 local itemMonitor = {
 	
-	new = function(itemslot, auraName)
+	new = function(itemslot, auraID)
 
 		local this = setmetatable({}, ns.targetMeta)
-	
-		this.update = function(self)
-
+		local name, rank, auraTexture = GetSpellInfo(auraID)
 			
-			-- local spellName = GetMacroSpell(macroName)
-			local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura("player", auraName)
+		this.name = name
+		this.texture  = auraTexture
 
-			this.texture  = GetSpellTexture(auraName)
+		local update = function()
 
+			local current = {start = this.start, duration = this.duration, stacks = this.stacks, mode = this.mode}
+			local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura("player", name)
+			
 			if auraName then
-				
-				self.mode = "ACTIVE"
+			
+				this.mode = "ACTIVE"
 
 				local start = auraExpires - auraDuration
 
-				self.start = start
-				self.duration = auraDuration
-				self.stacks = auraCount
-				self.maxStacks = auraCount
+				this.start = start
+				this.duration = auraDuration
+				this.stacks = auraCount
+				this.maxStacks = auraCount
 					
 			else
 				
-				self.mode = "INACTIVE"
+				this.mode = "INACTIVE"
 
 				local start, duration, enable = GetInventoryItemCooldown("player", itemslot)
 
-				self.start = start
-				self.duration = duration
-				self.stacks = 0
-				self.maxStacks = 0
+				this.start = start
+				this.duration = duration
+				this.stacks = 0
+				this.maxStacks = 0
 
 			end 
 
+			for key, state in pairs(current) do
+				if current[key] ~= this[key] then
+					this:updated()
+					break
+				end
+			end
+
 		end
+
+		this:onEvent("ACTIONBAR_UPDATE_COOLDOWN", update)
+		this:onEvent("SPELL_UPDATE_USABLE", update)
 
 		return this
 
