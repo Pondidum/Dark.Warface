@@ -11,7 +11,7 @@ local totemMonitor = {
 
 		local update = function()
 
-			local current = {start = this.start, duration = this.duration, mode = this.mode}
+			local lastState = {start = this.start, duration = this.duration, mode = this.mode}
 			local haveTotem, name, startTime, duration, icon = GetTotemInfo(totemSlot)
 
 			if haveTotem then
@@ -26,7 +26,7 @@ local totemMonitor = {
 				this:reset()
 			end 
 
-			self:updated(current)
+			this:updated(lastState)
 
 		end
 

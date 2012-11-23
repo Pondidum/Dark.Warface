@@ -18,11 +18,11 @@ local target = {
 
 	end,
 
-	updated = function(self, current)
+	updated = function(self, lastState)
 
-		for key, state in pairs(current) do
+		for key, state in pairs(lastState) do
 
-			if current[key] ~= this[key] then
+			if state ~= self[key] then
 				
 				for key, action in pairs(self.listeners) do
 					action(self)

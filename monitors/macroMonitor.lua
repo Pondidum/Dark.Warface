@@ -10,7 +10,7 @@ local macroMonitor = {
 
 		local update = function()
 
-			local current = {start = this.start, duration = this.duration, stacks = this.stacks, mode = this.mode}
+			local lastState = {start = this.start, duration = this.duration, stacks = this.stacks, mode = this.mode}
 			
 			local spellName = GetMacroSpell(macroName)
 			local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura("player", spellName)
@@ -41,7 +41,7 @@ local macroMonitor = {
 
 			end 
 
-			self:updated(current)
+			this:updated(lastState)
 
 		end
 

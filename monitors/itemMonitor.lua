@@ -12,7 +12,7 @@ local itemMonitor = {
 
 		local update = function()
 
-			local current = {start = this.start, duration = this.duration, stacks = this.stacks, mode = this.mode}
+			local lastState = {start = this.start, duration = this.duration, stacks = this.stacks, mode = this.mode}
 			local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura("player", name)
 			
 			if auraName then
@@ -39,7 +39,7 @@ local itemMonitor = {
 
 			end 
 
-			self:updated(current)
+			this:updated(lastState)
 
 		end
 
