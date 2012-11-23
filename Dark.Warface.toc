@@ -16,6 +16,7 @@ monitors\totemMonitor.lua
 controller.lua
 controllers\cdAndActiveTextController.lua
 controllers\stacksTextController.lua
+controllers\activeGlowController.lua
 
 button.lua
 
