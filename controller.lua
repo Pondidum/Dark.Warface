@@ -36,6 +36,14 @@ local controller = {
 			glowControllers[name] = action
 		end	
 
+		this.defaultTextControllerIs = function(name)
+			textControllers.default = textControllers[name]
+		end
+
+		this.defaultGlowControllerIs = function(name)
+			glowControllers.default = glowControllers[name]
+		end
+
 		return this
 
 	end,
