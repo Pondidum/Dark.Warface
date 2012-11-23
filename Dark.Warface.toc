@@ -6,11 +6,16 @@
 ## RequiredDeps: Dark.Core
 
 bootstrap.lua
-monitor.lua
 
+monitor.lua
 monitors\itemMonitor.lua
 monitors\macroMonitor.lua
 monitors\spellMonitor.lua
 monitors\totemMonitor.lua
+
+controller.lua
+controllers\cdAndActiveTextController.lua
+
+button.lua
 
 initialise.lua
