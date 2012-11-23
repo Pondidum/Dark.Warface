@@ -39,12 +39,7 @@ local itemMonitor = {
 
 			end 
 
-			for key, state in pairs(current) do
-				if current[key] ~= this[key] then
-					this:updated()
-					break
-				end
-			end
+			self:updated(current)
 
 		end
 

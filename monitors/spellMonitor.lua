@@ -2,13 +2,15 @@ local addon, ns = ...
 
 local spellMonitor = {
 	
-	new = function(spellName)
+	new = function(spellID)
 
 		local this = {}
 		setmetatable(this, ns.targetMeta)
 		
+		local spellName, spellRank, spellTexture = GetSpellInfo(spellID)
+
 		this.name = spellName
-		this.texture = GetSpellTexture(spellName)
+		this.texture = spellTexture
 
 		local update = function()
 
@@ -40,12 +42,7 @@ local spellMonitor = {
 
 			end 
 
-			for key, state in pairs(current) do
-				if current[key] ~= this[key] then
-					this:updated()
-					break
-				end
-			end
+			self:updated(current)
 
 		end
 

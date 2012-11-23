@@ -12,47 +12,29 @@ local target = {
 	texture = nil,
 	listeners = {},
 
-	setCooldown = function(self, cooldownFrame)
-
-		CooldownFrame_SetTimer(cooldownFrame, self.start, self.duration, 1, self.stacks, self.maxStacks)
-
-	end,
-
-	setAura = function(self, auraFrame)
-
-		CooldownFrame_SetTimer(auraFrame, self.start, self.duration, 1, self.stacks, self.maxStacks)
-
-	end,
-
-	setStacks = function(self, text)
-
-		if self.stacks ~= nil and self.stacks > 0 then
-			text:SetText(self.stacks)
-		else
-			text:SetText("")	
-		end
-
-	end,
-
 	addListener = function(self, key, action)
 
 		self.listeners[key] = action
 
 	end,
 
-	updated = function(self)
+	updated = function(self, current)
 
-		for key, action in pairs(self.listeners) do
-			action(self)
+		for key, state in pairs(current) do
+
+			if current[key] ~= this[key] then
+				
+				for key, action in pairs(self.listeners) do
+					action(self)
+				end
+
+				break
+
+			end
+
 		end
 
-	end,
-
-	setTexture = function(self, texture)
-
-		texture:SetTexture(self.texture)
-
-	end,
+	end,	
 
 	onEvent = function(self, event, action)
 		eventStore.register(event, nil, action)
