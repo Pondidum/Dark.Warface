@@ -15,7 +15,7 @@ local controller = {
 				display.icon:SetTexture(m.texture)
 			end)
 
-		end,
+		end
 
 		local this = {}
 
