@@ -13,4 +13,3 @@ ns.controller.addGlowController("ACTIVE", function(monitor, display, extra)
 	end)
 
 end)
-	

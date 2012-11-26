@@ -1,6 +1,7 @@
 local addon, ns = ...
 
 local init = function()
+	
 
 	ns.controller.defaultTextControllerIs("CDANDACTIVE")
 	ns.controller.defaultGlowControllerIs("ACTIVE")
@@ -11,7 +12,7 @@ local init = function()
 	display:SetSize(32,32)
 	display:SetPoint("CENTER", UIParent, "CENTER", 0, -185)
 
-	ns.controller.factory(spellcd, display, { textmode = "STACKS", glowmode = "STACKS", stacks = 5})
+	ns.controller.factory(spellcd, display, { })
 	
 	Dark.warface = ns
 
