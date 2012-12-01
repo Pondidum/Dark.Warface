@@ -7,7 +7,7 @@ local Button = {
 
 		local button = CreateFrame("Button", name, parent, "ActionButtonTemplate")
 	
-		button.glow = CreateFrame("Frame", name .. "Glow", button, "ActionBarButtonSpellActivationAlert")
+		button.glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
 		button.icon  = _G[name.."Icon"]
 		button.cooldown = _G[name.."Cooldown"]
 		button.text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
@@ -20,7 +20,6 @@ local Button = {
 		local pushed = button.GetPushedTexture and button:GetPushedTexture() or nil
 		pushed:SetTexture(nil)
 
-		--button:RegisterForDrag("LeftButton", "RightButton");
 		button:RegisterForClicks(nil);
 		button:EnableMouse(false)
 
