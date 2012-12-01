@@ -4,7 +4,7 @@ local macroMonitor = {
 	
 	new = function(macroName)
 
-		local this = setmetatable({}, ns.targetMeta)
+		local this = ns.monitor:new()
 	
 		this.name = macroName
 

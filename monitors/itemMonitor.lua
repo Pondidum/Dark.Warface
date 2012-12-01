@@ -4,7 +4,7 @@ local itemMonitor = {
 	
 	new = function(itemslot, auraID)
 
-		local this = setmetatable({}, ns.targetMeta)
+		local this = ns.monitor:new()
 		local name, rank, auraTexture = GetSpellInfo(auraID)
 			
 		this.name = name

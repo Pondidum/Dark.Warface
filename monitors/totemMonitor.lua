@@ -4,7 +4,7 @@ local totemMonitor = {
 	
 	new = function(totemSlot)
 
-		local this = setmetatable({}, ns.targetMeta)
+		local this = ns.monitor:new()
 	
 		this.name = "TotemSlot" .. totemSlot
 		this.texture = "Interface\\Icons\\Spell_Fire_TotemOfWrath"

@@ -1,16 +1,24 @@
 local addon, ns = ...
 local eventStore = Dark.core.events
 
-local target = {
-	
-	name = "",
-	start = 0,
-	duration = 0,
-	stacks = 0,
-	maxStacks = 0,	
-	mode = "NONE",		--NONE, ACTIVE, INACTIVE
-	texture = nil,
-	listeners = {},
+local monitor = {
+
+	new = function(self)
+
+		local this = {
+			name = "",
+			start = 0,
+			duration = 0,
+			stacks = 0,
+			maxStacks = 0,	
+			mode = "NONE",		--NONE, ACTIVE, INACTIVE
+			texture = nil,
+			listeners = {},
+		}
+
+		return setmetatable(this, { __index = self } )
+
+	end,
 
 	addListener = function(self, key, action)
 
@@ -35,6 +43,13 @@ local target = {
 		end
 
 	end,	
+
+	update = function(self)
+
+		for key, action in pairs(self.listeners) do
+			action(self)
+		end
+	end,
 
 	onEvent = function(self, event, action)
 		eventStore.register(event, nil, action)
@@ -66,4 +81,4 @@ local target = {
 
 }
 
-ns.targetMeta = { __index = target }
+ns.monitor = monitor

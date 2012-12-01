@@ -4,8 +4,7 @@ local spellMonitor = {
 	
 	new = function(spellID)
 
-		local this = {}
-		setmetatable(this, ns.targetMeta)
+		local this = ns.monitor:new()
 		
 		local spellName, spellRank, spellTexture = GetSpellInfo(spellID)
 
