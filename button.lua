@@ -12,8 +12,6 @@ local Button = {
 		button.cooldown = _G[name.."Cooldown"]
 		button.text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
 
-		
-		core.style.addBackground(button)
 		core.style.addShadow(button)
 		core.style.actionButton(button)
 
