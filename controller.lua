@@ -8,23 +8,27 @@ local controller = {
 
 		local textControllers = setmetatable({}, defaultMeta)
 		local glowControllers = setmetatable({}, defaultMeta)
+		local baseControllers = setmetatable({}, defaultMeta)
 
-		local baseController = function(monitor, display, extra)
+		baseControllers["default"] = function(model, view, extra)
 
-			monitor:addListener("baseController", function(m)
-				display.icon:SetTexture(m.texture)
+			model:addListener("baseController", function(m)
+				view.icon:SetTexture(m.texture)
 			end)
 
 		end
+
 
 		local this = {}
 
 		this.factory = function(monitor, display, extra)
 
-			baseController(monitor, display, extra)
+			baseControllers["default"](monitor, display, extra)
 
 			textControllers[extra.textmode](monitor, display, extra)
 			glowControllers[extra.glowmode](monitor, display, extra)
+
+			monitor:forceUpdate()
 
 		end
 
