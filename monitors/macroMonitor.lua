@@ -7,6 +7,7 @@ local macroMonitor = {
 		local this = ns.monitor:new()
 	
 		this.name = macroName
+		this.texture  = GetSpellTexture(GetMacroSpell(macroName))
 
 		local update = function()
 
