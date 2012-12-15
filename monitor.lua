@@ -44,7 +44,7 @@ local monitor = {
 
 	end,	
 
-	update = function(self)
+	forceUpdate = function(self)
 
 		for key, action in pairs(self.listeners) do
 			action(self)
