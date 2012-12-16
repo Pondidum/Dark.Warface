@@ -138,7 +138,6 @@ local onSpecChanged = function()
 
 			ns.controller.factory(model, view, entry.controllers)
 
-			print(entry.view)
 			containers[entry.view].add(view)
 			table.insert(models, model)
 
