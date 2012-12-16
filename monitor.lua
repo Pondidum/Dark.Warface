@@ -20,6 +20,10 @@ local monitor = {
 
 	end,
 
+	clearListeners = function(self)
+		listeners = {}
+	end,
+
 	addListener = function(self, key, action)
 
 		self.listeners[key] = action
@@ -27,6 +31,10 @@ local monitor = {
 	end,
 
 	updated = function(self, lastState)
+
+		if self.mode == "NONE" then
+			return
+		end
 
 		for key, state in pairs(lastState) do
 

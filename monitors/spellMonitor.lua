@@ -30,14 +30,20 @@ local spellMonitor = {
 					
 			else
 				
-				this.mode = "INACTIVE"
-
 				local start, duration, enable, charges, maxCharges = GetSpellCooldown(spellName)
 
-				this.start = start
-				this.duration = duration
-				this.stacks = charges
-				this.maxStacks = maxCharges
+				if start ~= nil then
+
+					this.mode = "INACTIVE"
+
+					this.start = start
+					this.duration = duration
+					this.stacks = charges
+					this.maxStacks = maxCharges
+
+				else
+					this:reset()
+				end
 
 			end 
 
