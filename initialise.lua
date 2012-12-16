@@ -35,6 +35,15 @@ local displayConfig = {
 
 }
 
+local spellBaseConfig = {
+	view = "default",
+	controllers = { 
+		textmode = "CDANDACTIVE", 
+		glowmode = "ACTIVE"
+	},
+	spec = "ALL",
+}
+
 local spellConfig = {
 	
 	SHAMAN = {
@@ -45,9 +54,9 @@ local spellConfig = {
 		{ type = "spell", 	args = 114049 },		--ascendance
 		{ type = "spell", 	args = 57994 },			--wind shear
 
-		{ type = "spell", 	args = 8042,			view = "rotation" },			--earthshock
-		{ type = "spell", 	args = 60103,			view = "rotation" },			--lavalash
-		{ type = "spell", 	args = 17364,			view = "rotation" },			--stormstrike
+		{ type = "spell", 	args = 8042,			view = "rotation"},			--earthshock
+		{ type = "spell", 	args = 60103,			view = "rotation", spec = "Enhancement" },			--lavalash
+		{ type = "spell", 	args = 17364,			view = "rotation", spec = "Enhancement" },			--stormstrike
 		{ type = "spell", 	args = 53817,			view = "rotation", controllers = { glowmode = "STACKS", stacks = 5, textmode = "STACKS"} },			--maelstrom
 		{ type = "macro", 	args = "EnhUnleash",	view = "rotation" },			--unleash/flameshock macro
 	},
@@ -61,12 +70,89 @@ local spellConfig = {
 }
 
 
-local init = function()
+local containers = {}
+local views = {}
+local models = {}
+local spellMeta = { __index = spellBaseConfig }
+
+local getOrCreateView = function()
+	
+	for i, view in ipairs(views) do
+		
+		if not view.inUse then
+			view.inUse = true
+			view:Show()
+			return view
+		end
+
+	end
+
+	local view = ns.button.new("DarkWarface" .. #views, UIParent)
+	view.inUse = true
+
+	table.insert(views, view)
+
+	return view
+
+end
+
+local resetViews = function()
+	
+	for i,view in ipairs(views) do
+		view.inUse = false
+	end
+
+	for n, container in pairs(containers) do
+		container.clear()
+	end
+
+end
+
+local resetModels = function()
+	
+	for i, model in pairs(models) do
+		model.clearListeners()
+	end
+
+	models = {}
+end
+
+local onSpecChanged = function()
+	
+	resetViews()
+	resetModels()
+
+	local class, classFile = UnitClass("Player")
+	local specID, specName = GetSpecializationInfo(GetSpecialization())
+
+	local classSets = spellConfig[classFile]
+
+	for i, entry in ipairs(classSets) do
+		
+		setmetatable(entry, spellMeta)
+
+		if entry.spec == "ALL" or entry.spec == specName then
+			
+			local model = ns.monitors[entry.type].new(parseArgs(entry.args))
+			local view = getOrCreateView() --ns.button.new("DarkWarface" .. i, UIParent)
+
+			ns.controller.factory(model, view, entry.controllers)
+
+			print(entry.view)
+			containers[entry.view].add(view)
+			table.insert(models, model)
+
+		end
+
+	end
+
+end
+
+local onPlayerLogin = function()
 	
 	ns.controller.defaultTextControllerIs("CDANDACTIVE")
 	ns.controller.defaultGlowControllerIs("ACTIVE")
 
-	local containers = {}
 
 	for name, conf in pairs(displayConfig) do
 
@@ -78,26 +164,11 @@ local init = function()
 
 	end
 
-
-	
-
-	local class, classFile = UnitClass("Player")
-	local classSets = spellConfig[classFile]
-
-	for i, entry in ipairs(classSets) do
-		
-		local model = ns.monitors[entry.type].new(parseArgs(entry.args))
-		local view = ns.button.new("DarkWarface" .. model.name, UIParent)
-
-		ns.controller.factory(model, view, entry.controllers or {})
-
-		containers[entry.view or "default"].add(view)
-
-	end
-	
-	Dark.warface = ns
+	onSpecChanged()
+	Dark.core.events.register("ACTIVE_TALENT_GROUP_CHANGED", nil, onSpecChanged)
 
 end
 
-Dark.core.events.register("PLAYER_LOGIN", nil, init)
+Dark.core.events.register("PLAYER_LOGIN", nil, onPlayerLogin)
 
+Dark.warface = ns
