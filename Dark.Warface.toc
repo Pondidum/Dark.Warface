@@ -5,7 +5,7 @@
 ## Notes: Aura tracker
 ## RequiredDeps: Dark.Core
 
-bootstrap.lua
+initialise.lua
 
 monitor.lua
 monitors\itemMonitor.lua
@@ -21,4 +21,4 @@ controllers\stacksGlowController.lua
 
 button.lua
 
-initialise.lua
+run.lua
