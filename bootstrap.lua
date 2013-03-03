@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local bootstrap = function()
+local init = function()
 
 	--Dark.Warface = ns	-- change to lib object later
 
@@ -8,4 +8,4 @@ local bootstrap = function()
 
 end
 
-bootstrap()
+init()

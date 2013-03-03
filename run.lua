@@ -1,5 +1,5 @@
 local addon, ns = ...
-
+local config = ns.config
 
 local parseArgs = function(args)
 
@@ -11,29 +11,7 @@ local parseArgs = function(args)
 
 end
 
-local displayConfig = {
-	
-	default = {
-		anchor = {"CENTER", DarkuiFrame, "CENTER", 0, -100},
-		autosize = true, 
-		marginLeft = 10, 
-		marginRight = 10,
-		defaultChildWidth = 27,
-		defaultChildHeight = 27,
-		forceChildSize = true,
-	},
 
-	rotation = {
-		anchor = {"CENTER", DarkuiFrame, "CENTER", 0, -140},
-		autosize = true, 
-		marginLeft = 10, 
-		marginRight = 10,
-		defaultChildWidth = 32,
-		defaultChildHeight = 32,
-		forceChildSize = true,
-	},
-
-}
 
 local spellBaseConfig = {
 	view = "default",
@@ -44,31 +22,7 @@ local spellBaseConfig = {
 	spec = "ALL",
 }
 
-local spellConfig = {
-	
-	SHAMAN = {
-
-		{ type = "item",	args = {10, 96228} },	--gloves, synapse springs
-		{ type = "spell", 	args = 51533 },			--feral spirit
-		{ type = "spell", 	args = 2894 },			--fire elemental
-		{ type = "spell", 	args = 114049 },		--ascendance
-		{ type = "spell", 	args = 57994 },			--wind shear
-
-		{ type = "spell", 	args = 8042,			view = "rotation"},			--earthshock
-		{ type = "spell", 	args = 60103,			view = "rotation", spec = "Enhancement" },			--lavalash
-		{ type = "spell", 	args = 17364,			view = "rotation", spec = "Enhancement" },			--stormstrike
-		{ type = "spell", 	args = 53817,			view = "rotation", controllers = { glowmode = "STACKS", stacks = 5, textmode = "STACKS"} },			--maelstrom
-		{ type = "macro", 	args = "EnhUnleash",	view = "rotation" },			--unleash/flameshock macro
-	},
-
-	DRUID = {
-
-		{ type = "spell",	args = 78674 }
-
-	}
-
-}
-
+setmetatable(config.spells, { __index = function(t, v) return {} end})
 
 local containers = {}
 local views = {}
@@ -125,7 +79,7 @@ local onSpecChanged = function()
 	local class, classFile = UnitClass("Player")
 	local specID, specName = GetSpecializationInfo(GetSpecialization())
 
-	local classSets = spellConfig[classFile]
+	local classSets = config.spells[classFile]
 
 	for i, entry in ipairs(classSets) do
 		
@@ -153,7 +107,7 @@ local onPlayerLogin = function()
 	ns.controller.defaultGlowControllerIs("ACTIVE")
 
 
-	for name, conf in pairs(displayConfig) do
+	for name, conf in pairs(config.displays) do
 
 		local container = CreateFrame("Frame", "DarkuiWarface" .. name, UIParent)
 		container:SetPoint(unpack(conf.anchor))
