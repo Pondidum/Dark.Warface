@@ -14,7 +14,7 @@ end
 
 
 local spellBaseConfig = {
-	view = "default",
+	container = "default",
 	controllers = { 
 		textmode = "CDANDACTIVE", 
 		glowmode = "ACTIVE"
@@ -92,7 +92,7 @@ local onSpecChanged = function()
 
 			ns.controller.factory(model, view, entry.controllers)
 
-			containers[entry.view].add(view)
+			containers[entry.container].add(view)
 			table.insert(models, model)
 
 		end

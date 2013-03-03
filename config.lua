@@ -44,11 +44,11 @@ local config = {
 			{ type = "item",	args = {10, 96228} },	--gloves, synapse springs
 			--{ type = "spell", 	args = 57994 },			--wind shear
 
-			{ type = "spell", 	args = 8042,			view = "rotation"},			--earthshock
-			{ type = "spell", 	args = 60103,			view = "rotation", spec = "Enhancement" },			--lavalash
-			{ type = "spell", 	args = 17364,			view = "rotation", spec = "Enhancement" },			--stormstrike
-			{ type = "macro", 	args = "EnhUnleash",	view = "rotation" },			--unleash/flameshock macro
-			{ type = "spell", 	args = 53817,			view = "rotation", controllers = { glowmode = "STACKS", stacks = 5, textmode = "STACKS"} },			--maelstrom
+			{ type = "spell", 	args = 8042,			container = "rotation"},			--earthshock
+			{ type = "spell", 	args = 60103,			container = "rotation", spec = "Enhancement" },			--lavalash
+			{ type = "spell", 	args = 17364,			container = "rotation", spec = "Enhancement" },			--stormstrike
+			{ type = "macro", 	args = "EnhUnleash",	container = "rotation" },			--unleash/flameshock macro
+			{ type = "spell", 	args = 53817,			container = "rotation", controllers = { glowmode = "STACKS", stacks = 5, textmode = "STACKS"} },			--maelstrom
 			
 		}
 
