@@ -15,9 +15,6 @@ local Button = {
 		core.style.addShadow(button)
 		core.style.actionButton(button)
 
-		local pushed = button.GetPushedTexture and button:GetPushedTexture() or nil
-		pushed:SetTexture(nil)
-
 		button:RegisterForClicks(nil);
 		button:EnableMouse(false)
 
