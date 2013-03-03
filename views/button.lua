@@ -1,7 +1,7 @@
 local addon, ns = ...
 local core = Dark.core
 
-local Button = {
+local createButton = {
 	
 	new = function(name, parent, extra)
 
@@ -62,4 +62,4 @@ local Button = {
 	end,
 }
 
-ns.button = Button
+ns.views["BUTTON"] = createButton

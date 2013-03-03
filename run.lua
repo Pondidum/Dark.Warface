@@ -41,7 +41,7 @@ local getOrCreateView = function()
 
 	end
 
-	local view = ns.button.new("DarkWarface" .. #views, UIParent)
+	local view = ns.views["BUTTON"].new("DarkWarface" .. #views, UIParent)
 	view.inUse = true
 
 	table.insert(views, view)
