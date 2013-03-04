@@ -110,7 +110,7 @@ local onPlayerLogin = function()
 	for name, conf in pairs(config.displays) do
 
 		local container = CreateFrame("Frame", "DarkuiWarface" .. name, UIParent)
-		container:SetPoint(unpack(conf.anchor))
+		conf.customise(UIParent, container)
 		Dark.core.layout.init(container, conf)		
 
 		containers[name] = container

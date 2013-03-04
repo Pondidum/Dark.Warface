@@ -5,25 +5,40 @@ local config = {
 	displays = {
 		
 		default = {
-			anchor = {"CENTER", DarkuiFrame, "CENTER", 0, -100},
 			autosize = true, 
 			marginLeft = 10, 
 			marginRight = 10,
 			defaultChildWidth = 25,
 			defaultChildHeight = 25,
 			forceChildSize = true,
+			customise = function(parent, this)
+				this:SetPoint("CENTER", DarkuiFrame, "CENTER", 0, -100)
+			end,
 		},
 
 		rotation = {
-			anchor = {"CENTER", DarkuiFrame, "CENTER", 0, -140},
 			autosize = true, 
 			marginLeft = 10, 
 			marginRight = 10,
 			defaultChildWidth = 32,
 			defaultChildHeight = 32,
 			forceChildSize = true,
+			customise = function(parent, this)
+				this:SetPoint("CENTER", DarkuiFrame, "CENTER", 0, -140)
+			end,
 		},
 
+		target = {
+			type = "STACK",
+			origin = "BOTTOM",
+			autosize = true,
+			paddingLeft = 0,
+			paddingRight = 0,
+			customise = function(parent, this)
+				this:SetPoint("BOTTOMLEFT", oUF_DarkUnitFramesTarget, "TOPLEFT", 0, 30)
+				this:SetPoint("BOTTOMRIGHT", oUF_DarkUnitFramesTarget, "TOPRIGHT", 0, 30)
+			end,
+		},
 	},
 
 
@@ -50,6 +65,7 @@ local config = {
 			{ type = "macro", 	args = "EnhUnleash",	container = "rotation" },			--unleash/flameshock macro
 			{ type = "spell", 	args = 53817,			container = "rotation", controllers = { glowmode = "STACKS", stacks = 5, textmode = "STACKS"} },			--maelstrom
 			
+			--{ type = "spell", 	args = 8050,			container = "target" } --flameshock
 		}
 
 	}
