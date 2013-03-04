@@ -29,7 +29,7 @@ local config = {
 				this:SetPoint("CENTER", DarkuiFrame, "CENTER", 0, -140)
 			end,
 		},
-		--[[
+
 		target = {
 			type = "STACK",
 			origin = "BOTTOM",
@@ -40,9 +40,9 @@ local config = {
 				this:SetPoint("BOTTOMLEFT", oUF_DarkUnitFramesTarget, "TOPLEFT", 0, 30)
 				this:SetPoint("BOTTOMRIGHT", oUF_DarkUnitFramesTarget, "TOPRIGHT", 0, 30)
 			end,
-			childView = "BAR",
+			childView = "bar",
 		},
-		]]--
+
 	},
 
 	spellBase = {
@@ -77,7 +77,7 @@ local config = {
 			{ type = "macro", 	args = "EnhUnleash",	container = "rotation" },			--unleash/flameshock macro
 			{ type = "spell", 	args = 53817,			container = "rotation", controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}},			--maelstrom
 			
-			--{ type = "spell", 	args = 8050,			container = "target" } --flameshock
+			{ type = "aura", 	args = {8050, "target"},container = "target" } --flameshock
 		}
 
 	}

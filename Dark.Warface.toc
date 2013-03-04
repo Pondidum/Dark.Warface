@@ -13,6 +13,7 @@ monitors\itemMonitor.lua
 monitors\macroMonitor.lua
 monitors\spellMonitor.lua
 monitors\totemMonitor.lua
+monitors\auraMonitor.lua
 
 controller.lua
 controllers\cdAndActiveTextController.lua
