@@ -1,7 +1,7 @@
 local addon, ns = ...
 local core = Dark.core
 
-ns.views.addView("button", function(name, parent)
+ns.views.addView("icon", function(name, parent)
 
 	local button = CreateFrame("Button", name, parent, "ActionButtonTemplate")
 

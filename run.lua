@@ -32,9 +32,6 @@ local containers = {}
 local models = {}
 local spellMeta = { __index = spellBaseConfig }
 
---local viewCache = core.cache.new(function(i) return ns.views["BUTTON"].new("DarkWarface" .. i, UIParent) end)
-
-
 local resetViews = function()
 	
 	ns.views.recycleAll()

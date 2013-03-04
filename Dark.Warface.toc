@@ -21,6 +21,7 @@ controllers\activeGlowController.lua
 controllers\stacksGlowController.lua
 
 views.lua
-views\button.lua
+views\icon.lua
+views\bar.lua
 
 run.lua

@@ -11,7 +11,7 @@ local config = {
 			defaultChildWidth = 25,
 			defaultChildHeight = 25,
 			forceChildSize = true,
-			childView = "button",
+			childView = "icon",
 			customise = function(parent, this)
 				this:SetPoint("CENTER", DarkuiFrame, "CENTER", 0, -100)
 			end,
@@ -24,7 +24,7 @@ local config = {
 			defaultChildWidth = 32,
 			defaultChildHeight = 32,
 			forceChildSize = true,
-			childView = "button",
+			childView = "icon",
 			customise = function(parent, this)
 				this:SetPoint("CENTER", DarkuiFrame, "CENTER", 0, -140)
 			end,
