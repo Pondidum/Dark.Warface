@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-ns.controller.add("stackstext", function(monitor, display, extra)
+ns.controller.add("stacksText", function(monitor, display, extra)
 			
 	display.hideCooldown()
 	display.showText()
