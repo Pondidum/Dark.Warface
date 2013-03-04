@@ -13,7 +13,7 @@ local controller = {
 		baseControllers["default"] = function(model, view, extra)
 
 			model:addListener("baseController", function(m)
-				view.icon:SetTexture(m.texture)
+				view.setIcon(m.texture)
 			end)
 
 		end

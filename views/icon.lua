@@ -8,7 +8,7 @@ ns.views.addView("icon", function(name, parent)
 	local button = CreateFrame("Button", name, parent, "ActionButtonTemplate")
 
 	local glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
-	button.icon  = _G[name.."Icon"]
+	local icon  = _G[name.."Icon"]
 	local cooldown = _G[name.."Cooldown"]
 	local text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
 
@@ -61,6 +61,10 @@ ns.views.addView("icon", function(name, parent)
 	
 	button.setText = function(value)
 		text:SetText(value)
+	end
+
+	button.setIcon = function(value)
+		icon:SetTexture(value)
 	end
 
 	button.showCooldown = function()

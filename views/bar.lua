@@ -7,7 +7,7 @@ local style = core.style
 ns.views.addView("bar", function(name, parent)
 
 	local frame = CreateFrame("Statusbar", name, parent)
-	frame:SetStatusbarTexture(core.textures.normal)
+	frame:SetStatusBarTexture(core.textures.normal)
 
 	style.addBackground(frame)
 	style.addShadow(frame)
@@ -47,13 +47,25 @@ ns.views.addView("bar", function(name, parent)
 	frame:SetScript("OnUpdate", onUpdate)
 	frame.setReverseFill = reverseFill
 
+
 	frame.showGlow = function() end
 	frame.hideGlow = function() end
+
+
+	frame.showText = function() end
+	frame.hideText = function() end	
+	frame.setText = function(value) end
+
+	frame.setIcon = function(value) end
+
+	frame.showCooldown = function() end
+	frame.hideCooldown = function() end
 
 	frame.setCooldown = function(start, duration, active, stacks, maxStacks)
 		setCooldown(start, duration)
 	end
 
+	setCooldown(0,0)
 	return frame
 
 end)
