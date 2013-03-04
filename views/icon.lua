@@ -19,7 +19,6 @@ ns.views.addView("icon", function(name, parent)
 	button.text:SetAllPoints(button)
 	button.text:SetJustifyH("CENTER")
 
-
 	button.glow:SetWidth(button:GetWidth() * 1.4)
 	button.glow:SetHeight(button:GetHeight() * 1.4)
 	button.glow:SetPoint("CENTER", button, "CENTER", 0 ,0)
@@ -48,7 +47,10 @@ ns.views.addView("icon", function(name, parent)
 			button.glow.animOut:Play()  
 		end
 		
-		
+	end
+
+	button.setCooldown = function(start, duration, active, stacks, maxStacks)
+		CooldownFrame_SetTimer(button.cooldown, start, duration, active, stacks, maxStacks)
 	end
 
 	return button
