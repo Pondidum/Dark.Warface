@@ -1,14 +1,16 @@
 local addon, ns = ...
 local core = Dark.core
+local ui = core.ui
+local style = core.style
 
 ns.views.addView("icon", function(name, parent)
 
 	local button = CreateFrame("Button", name, parent, "ActionButtonTemplate")
 
-	button.glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
+	local glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
 	button.icon  = _G[name.."Icon"]
-	button.cooldown = _G[name.."Cooldown"]
-	button.text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
+	local cooldown = _G[name.."Cooldown"]
+	local text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
 
 	core.style.addShadow(button)
 	core.style.actionButton(button)
@@ -16,41 +18,61 @@ ns.views.addView("icon", function(name, parent)
 	button:RegisterForClicks(nil);
 	button:EnableMouse(false)
 
-	button.text:SetAllPoints(button)
-	button.text:SetJustifyH("CENTER")
+	text:SetAllPoints(button)
+	text:SetJustifyH("CENTER")
 
-	button.glow:SetWidth(button:GetWidth() * 1.4)
-	button.glow:SetHeight(button:GetHeight() * 1.4)
-	button.glow:SetPoint("CENTER", button, "CENTER", 0 ,0)
+	glow:SetWidth(button:GetWidth() * 1.4)
+	glow:SetHeight(button:GetHeight() * 1.4)
+	glow:SetPoint("CENTER", button, "CENTER", 0 ,0)
 
-	button.glow.animOut:SetScript("OnFinished", function(self) button.glow:Hide() end)
+	glow.animOut:SetScript("OnFinished", function(self) glow:Hide() end)
 
 	button.showGlow = function()
 		
-		if button.glow.animOut:IsPlaying() then
-			button.glow.animOut:Stop()  
+		if glow.animOut:IsPlaying() then
+			glow.animOut:Stop()  
 		end
 		
-		if not button.glow:IsVisible() then   
-			button.glow.animIn:Play()    
+		if not glow:IsVisible() then   
+			glow.animIn:Play()    
 		end
 		
 	end
 
 	button.hideGlow = function()
 		
-		if button.glow.animIn:IsPlaying() then
-			button.glow.animIn:Stop()  
+		if glow.animIn:IsPlaying() then
+			glow.animIn:Stop()  
 		end
 		
-		if button.glow:IsVisible() then     
-			button.glow.animOut:Play()  
+		if glow:IsVisible() then     
+			glow.animOut:Play()  
 		end
 		
 	end
 
+	button.showText = function()
+		text:Show()
+	end
+
+	button.hideText = function()
+		text:Hide()
+	end
+	
+	button.setText = function(value)
+		text:SetText(value)
+	end
+
+	button.showCooldown = function()
+		cooldown:Show()
+	end
+
+	button.hideCooldown = function()
+		cooldown:Hide()
+	end
+
 	button.setCooldown = function(start, duration, active, stacks, maxStacks)
-		CooldownFrame_SetTimer(button.cooldown, start, duration, active, stacks, maxStacks)
+		CooldownFrame_SetTimer(cooldown, start, duration, active, stacks, maxStacks)
 	end
 
 	return button

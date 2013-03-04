@@ -45,8 +45,14 @@ ns.views.addView("bar", function(name, parent)
 	end
 
 	frame:SetScript("OnUpdate", onUpdate)
-	frame.setCooldown = setCooldown
 	frame.setReverseFill = reverseFill
+
+	frame.showGlow = function() end
+	frame.hideGlow = function() end
+
+	frame.setCooldown = function(start, duration, active, stacks, maxStacks)
+		setCooldown(start, duration)
+	end
 
 	return frame
 

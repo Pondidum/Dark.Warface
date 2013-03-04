@@ -2,15 +2,15 @@ local addon, ns = ...
 
 ns.controller.addTextController("STACKS", function(monitor, display, extra)
 			
-	display.cooldown:Hide()
-	display.text:Show()
+	display.hideCooldown()
+	display.showText()
 
 	monitor:addListener("stacksTextController", function(m)
 
 		if m.stacks == nil or m.stacks == 0 then
-			display.text:SetText("")
+			display.setText("")
 		else
-			display.text:SetText(m.stacks)
+			display.setText(m.stacks)
 		end
 
 	end)
