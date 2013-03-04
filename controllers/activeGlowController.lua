@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-ns.controller.addGlowController("ACTIVE", function(monitor, display, extra)
+ns.controller.add("activeglow", function(monitor, display, extra)
 	
 	monitor:addListener("activeGlowController", function(m)
 

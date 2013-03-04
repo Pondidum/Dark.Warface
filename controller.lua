@@ -4,10 +4,9 @@ local controller = {
 
 	new = function()
 
-		local defaultMeta = { __index = function(t, k) return t.default end }
+		local defaultMeta = { __index = function(t, k) return function() end end }
 
-		local textControllers = setmetatable({}, defaultMeta)
-		local glowControllers = setmetatable({}, defaultMeta)
+		local controllers = setmetatable({}, defaultMeta)
 		local baseControllers = setmetatable({}, defaultMeta)
 
 		baseControllers["default"] = function(model, view, extra)
@@ -18,34 +17,22 @@ local controller = {
 
 		end
 
-
 		local this = {}
 
-		this.factory = function(monitor, display, extra)
+		this.factory = function(monitor, display, viewControllers, extra)
 
 			baseControllers["default"](monitor, display, extra)
 
-			textControllers[extra.textmode](monitor, display, extra)
-			glowControllers[extra.glowmode](monitor, display, extra)
+			for i, name in ipairs(viewControllers) do
+				controllers[string.lower(name)](monitor, display, extra)
+			end
 
 			monitor:forceUpdate()
 
 		end
 
-		this.addTextController = function(name, action)	
-			textControllers[name] = action
-		end
-
-		this.addGlowController = function(name, action)
-			glowControllers[name] = action
-		end	
-
-		this.defaultTextControllerIs = function(name)
-			textControllers.default = textControllers[name]
-		end
-
-		this.defaultGlowControllerIs = function(name)
-			glowControllers.default = glowControllers[name]
+		this.add = function(name, action)	
+			controllers[string.lower(name)] = action
 		end
 
 		return this

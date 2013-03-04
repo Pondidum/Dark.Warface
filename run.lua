@@ -17,20 +17,10 @@ end
 
 
 
-local spellBaseConfig = {
-	container = "default",
-	controllers = { 
-		textmode = "CDANDACTIVE", 
-		glowmode = "ACTIVE"
-	},
-	spec = "ALL",
-}
-
 setmetatable(config.spells, { __index = function(t, v) return {} end})
 
 local containers = {}
 local models = {}
-local spellMeta = { __index = spellBaseConfig }
 
 local resetViews = function()
 	
@@ -60,6 +50,7 @@ local onSpecChanged = function()
 	local specID, specName = GetSpecializationInfo(GetSpecialization())
 
 	local classSets = config.spells[classFile]
+	local spellMeta = { __index = config.spellBase }
 
 	for i, entry in ipairs(classSets) do
 		
@@ -72,7 +63,7 @@ local onSpecChanged = function()
 			local model = ns.monitors[entry.type].new(parseArgs(entry.args))
 			local view = container.getChildView()
 
-			ns.controller.factory(model, view, entry.controllers)
+			ns.controller.factory(model, view, entry.controllers, entry.extra)
 
 			container.add(view)
 
@@ -86,9 +77,6 @@ end
 
 local onPlayerLogin = function()
 	
-	ns.controller.defaultTextControllerIs("CDANDACTIVE")
-	ns.controller.defaultGlowControllerIs("ACTIVE")
-
 	for name, conf in pairs(config.displays) do
 
 		local container = CreateFrame("Frame", "DarkuiWarface" .. name, UIParent)

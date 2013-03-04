@@ -45,6 +45,14 @@ local config = {
 		]]--
 	},
 
+	spellBase = {
+		container = "default",
+		controllers = { 
+			"cdandactiveText", 
+			"activeglow",
+		},
+		spec = "ALL",
+	},
 
 	spells = {
 	
@@ -67,7 +75,7 @@ local config = {
 			{ type = "spell", 	args = 60103,			container = "rotation", spec = "Enhancement" },			--lavalash
 			{ type = "spell", 	args = 17364,			container = "rotation", spec = "Enhancement" },			--stormstrike
 			{ type = "macro", 	args = "EnhUnleash",	container = "rotation" },			--unleash/flameshock macro
-			{ type = "spell", 	args = 53817,			container = "rotation", controllers = { glowmode = "STACKS", stacks = 5, textmode = "STACKS"} },			--maelstrom
+			{ type = "spell", 	args = 53817,			container = "rotation", controllers = { "stacksglow", "stackstext" }, extra = {stacks = 5}},			--maelstrom
 			
 			--{ type = "spell", 	args = 8050,			container = "target" } --flameshock
 		}

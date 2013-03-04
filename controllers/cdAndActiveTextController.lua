@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-ns.controller.addTextController("CDANDACTIVE", function(monitor, display, extra)
+ns.controller.add("cdandactivetext", function(monitor, display, extra)
 	
 	display.showCooldown()
 	display.hideText()
