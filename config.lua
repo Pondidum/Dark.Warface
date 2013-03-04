@@ -11,6 +11,7 @@ local config = {
 			defaultChildWidth = 25,
 			defaultChildHeight = 25,
 			forceChildSize = true,
+			childView = "button",
 			customise = function(parent, this)
 				this:SetPoint("CENTER", DarkuiFrame, "CENTER", 0, -100)
 			end,
@@ -23,11 +24,12 @@ local config = {
 			defaultChildWidth = 32,
 			defaultChildHeight = 32,
 			forceChildSize = true,
+			childView = "button",
 			customise = function(parent, this)
 				this:SetPoint("CENTER", DarkuiFrame, "CENTER", 0, -140)
 			end,
 		},
-
+		--[[
 		target = {
 			type = "STACK",
 			origin = "BOTTOM",
@@ -38,7 +40,9 @@ local config = {
 				this:SetPoint("BOTTOMLEFT", oUF_DarkUnitFramesTarget, "TOPLEFT", 0, 30)
 				this:SetPoint("BOTTOMRIGHT", oUF_DarkUnitFramesTarget, "TOPRIGHT", 0, 30)
 			end,
+			childView = "BAR",
 		},
+		]]--
 	},
 
 

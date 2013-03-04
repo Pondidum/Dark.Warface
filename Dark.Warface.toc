@@ -20,6 +20,7 @@ controllers\stacksTextController.lua
 controllers\activeGlowController.lua
 controllers\stacksGlowController.lua
 
+views.lua
 views\button.lua
 
 run.lua

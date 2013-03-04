@@ -1,6 +1,10 @@
 local addon, ns = ...
 local config = ns.config
 
+local core = Dark.core
+local layout = core.layout
+local events = core.events
+
 local parseArgs = function(args)
 
 	if type(args) == "table" then
@@ -25,36 +29,15 @@ local spellBaseConfig = {
 setmetatable(config.spells, { __index = function(t, v) return {} end})
 
 local containers = {}
-local views = {}
 local models = {}
 local spellMeta = { __index = spellBaseConfig }
 
-local getOrCreateView = function()
-	
-	for i, view in ipairs(views) do
-		
-		if not view.inUse then
-			view.inUse = true
-			view:Show()
-			return view
-		end
+--local viewCache = core.cache.new(function(i) return ns.views["BUTTON"].new("DarkWarface" .. i, UIParent) end)
 
-	end
-
-	local view = ns.views["BUTTON"].new("DarkWarface" .. #views, UIParent)
-	view.inUse = true
-
-	table.insert(views, view)
-
-	return view
-
-end
 
 local resetViews = function()
 	
-	for i,view in ipairs(views) do
-		view.inUse = false
-	end
+	ns.views.recycleAll()
 
 	for n, container in pairs(containers) do
 		container.clear()
@@ -87,12 +70,15 @@ local onSpecChanged = function()
 
 		if entry.spec == "ALL" or entry.spec == specName then
 			
+			local container = containers[entry.container]
+
 			local model = ns.monitors[entry.type].new(parseArgs(entry.args))
-			local view = getOrCreateView() --ns.button.new("DarkWarface" .. i, UIParent)
+			local view = container.getChildView()
 
 			ns.controller.factory(model, view, entry.controllers)
 
-			containers[entry.container].add(view)
+			container.add(view)
+
 			table.insert(models, model)
 
 		end
@@ -106,22 +92,25 @@ local onPlayerLogin = function()
 	ns.controller.defaultTextControllerIs("CDANDACTIVE")
 	ns.controller.defaultGlowControllerIs("ACTIVE")
 
-
 	for name, conf in pairs(config.displays) do
 
 		local container = CreateFrame("Frame", "DarkuiWarface" .. name, UIParent)
 		conf.customise(UIParent, container)
-		Dark.core.layout.init(container, conf)		
+		layout.init(container, conf)		
+
+		container.getChildView = function()
+			return ns.views.get(conf.childView)
+		end
 
 		containers[name] = container
 
 	end
 
 	onSpecChanged()
-	Dark.core.events.register("ACTIVE_TALENT_GROUP_CHANGED", nil, onSpecChanged)
+	events.register("ACTIVE_TALENT_GROUP_CHANGED", nil, onSpecChanged)
 
 end
 
-Dark.core.events.register("PLAYER_LOGIN", nil, onPlayerLogin)
+events.register("PLAYER_LOGIN", nil, onPlayerLogin)
 
 Dark.warface = ns

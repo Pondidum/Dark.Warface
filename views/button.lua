@@ -1,65 +1,56 @@
 local addon, ns = ...
 local core = Dark.core
 
-local createButton = {
-	
-	new = function(name, parent, extra)
+ns.views.addView("button", function(name, parent)
 
-		local button = CreateFrame("Button", name, parent, "ActionButtonTemplate")
-	
-		button.glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
-		button.icon  = _G[name.."Icon"]
-		button.cooldown = _G[name.."Cooldown"]
-		button.text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
+	local button = CreateFrame("Button", name, parent, "ActionButtonTemplate")
 
-		core.style.addShadow(button)
-		core.style.actionButton(button)
+	button.glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
+	button.icon  = _G[name.."Icon"]
+	button.cooldown = _G[name.."Cooldown"]
+	button.text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
 
-		button:RegisterForClicks(nil);
-		button:EnableMouse(false)
+	core.style.addShadow(button)
+	core.style.actionButton(button)
 
-		for key, value in pairs(extra or {}) do
-			button[key](button, unpack(value))
-		end	
+	button:RegisterForClicks(nil);
+	button:EnableMouse(false)
 
-		button.text:SetAllPoints(button)
-		button.text:SetJustifyH("CENTER")
+	button.text:SetAllPoints(button)
+	button.text:SetJustifyH("CENTER")
 
 
-		button.glow:SetWidth(button:GetWidth() * 1.4)
-		button.glow:SetHeight(button:GetHeight() * 1.4)
-		button.glow:SetPoint("CENTER", button, "CENTER", 0 ,0)
+	button.glow:SetWidth(button:GetWidth() * 1.4)
+	button.glow:SetHeight(button:GetHeight() * 1.4)
+	button.glow:SetPoint("CENTER", button, "CENTER", 0 ,0)
 
-		button.glow.animOut:SetScript("OnFinished", function(self) button.glow:Hide() end)
+	button.glow.animOut:SetScript("OnFinished", function(self) button.glow:Hide() end)
 
-		button.showGlow = function()
-			
-			if button.glow.animOut:IsPlaying() then
-				button.glow.animOut:Stop()  
-			end
-			
-			if not button.glow:IsVisible() then   
-				button.glow.animIn:Play()    
-			end
-			
+	button.showGlow = function()
+		
+		if button.glow.animOut:IsPlaying() then
+			button.glow.animOut:Stop()  
 		end
-
-		button.hideGlow = function()
-			
-			if button.glow.animIn:IsPlaying() then
-				button.glow.animIn:Stop()  
-			end
-			
-			if button.glow:IsVisible() then     
-				button.glow.animOut:Play()  
-			end
-			
-			
+		
+		if not button.glow:IsVisible() then   
+			button.glow.animIn:Play()    
 		end
+		
+	end
 
-		return button
+	button.hideGlow = function()
+		
+		if button.glow.animIn:IsPlaying() then
+			button.glow.animIn:Stop()  
+		end
+		
+		if button.glow:IsVisible() then     
+			button.glow.animOut:Play()  
+		end
+		
+		
+	end
 
-	end,
-}
+	return button
 
-ns.views["BUTTON"] = createButton
+end)
