@@ -13,7 +13,7 @@ ns.views.addView("bar", function(name, parent)
 	style.addShadow(frame)
 
 	local cdStart, cdDuration
-	local fill = true
+	local fill = false
 
 	local setCooldown = function(start, duration)
 		cdStart = start

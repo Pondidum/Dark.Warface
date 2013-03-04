@@ -10,11 +10,11 @@ local views = {
 		local viewCaches = {}
 
 		this.addView = function(type, createAction)
-			viewCaches[type] = cache.new(function(i) return createAction("DarkWarface" .. i, UIParent) end)
+			viewCaches[string.lower(type)] = cache.new(function(i) return createAction("DarkWarface" .. i, UIParent) end)
 		end
 
 		this.get = function(type)
-			return viewCaches[type].get()		
+			return viewCaches[string.lower(type)].get()		
 		end
 
 		this.recycleAll = function()
