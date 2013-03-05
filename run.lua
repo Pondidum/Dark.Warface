@@ -15,10 +15,6 @@ local parseArgs = function(args)
 
 end
 
-
-
-setmetatable(config.spells, { __index = function(t, v) return {} end})
-
 local containers = {}
 local models = {}
 
@@ -49,8 +45,8 @@ local onSpecChanged = function()
 	local class, classFile = UnitClass("Player")
 	local specID, specName = GetSpecializationInfo(GetSpecialization())
 
-	local classSets = config.spells[classFile]
-	local spellMeta = { __index = config.spellBase }
+	local classSets = config.cooldowns.spells[classFile]
+	local spellMeta = { __index = config.cooldowns.base }
 
 	for i, entry in ipairs(classSets) do
 		
@@ -77,7 +73,7 @@ end
 
 local onPlayerLogin = function()
 	
-	for name, conf in pairs(config.displays) do
+	for name, conf in pairs(config.cooldowns.displays) do
 
 		local container = CreateFrame("Frame", "DarkuiWarface" .. name, UIParent)
 		conf.customise(UIParent, container)
