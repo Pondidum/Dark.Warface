@@ -70,7 +70,6 @@ local monitor = {
 		self.stacks = 0
 		self.maxStacks = 0	
 		self.mode = "NONE"
-		self.texture = nil
 
 	end,
 
