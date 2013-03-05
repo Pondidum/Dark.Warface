@@ -3,6 +3,7 @@ local addon, ns = ...
 local core = Dark.core
 local events = core.events
 local style = core.style
+local ui = core.ui
 
 ns.views.addView("bar", function(name, parent)
 
@@ -12,7 +13,7 @@ ns.views.addView("bar", function(name, parent)
 	style.addBackground(frame)
 	style.addShadow(frame)
 
-	local cdStart, cdDuration
+	local cdStart, cdDuration = 0, 0
 	local fill = false
 
 	local setCooldown = function(start, duration)
@@ -21,6 +22,7 @@ ns.views.addView("bar", function(name, parent)
 
 		frame:SetMinMaxValues(0, duration)
 		frame:Show()
+
 	end
 
 	local reverseFill = function(value)
@@ -65,7 +67,6 @@ ns.views.addView("bar", function(name, parent)
 		setCooldown(start, duration)
 	end
 
-	setCooldown(0,0)
 	return frame
 
 end)

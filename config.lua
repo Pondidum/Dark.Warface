@@ -36,6 +36,7 @@ local config = {
 			autosize = true,
 			paddingLeft = 0,
 			paddingRight = 0,
+			defaultChildHeight = 20,
 			customise = function(parent, this)
 				this:SetPoint("BOTTOMLEFT", oUF_DarkUnitFramesTarget, "TOPLEFT", 0, 30)
 				this:SetPoint("BOTTOMRIGHT", oUF_DarkUnitFramesTarget, "TOPRIGHT", 0, 30)
@@ -77,7 +78,7 @@ local config = {
 			{ type = "macro", 	args = "EnhUnleash",	container = "rotation" },			--unleash/flameshock macro
 			{ type = "spell", 	args = 53817,			container = "rotation", controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}},			--maelstrom
 			
-			{ type = "aura", 	args = {8050, "target"},container = "target" } --flameshock
+			{ type = "aura", 	args = {8050, "target"},container = "target", controllers = {"cdAndActiveText"}} --flameshock
 		}
 
 	}

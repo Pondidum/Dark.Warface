@@ -30,6 +30,7 @@ local auraMonitor = {
 				
 			else
 				this:reset()
+				this:forceUpdate()
 			end
 
 			this:updated(lastState)
@@ -37,6 +38,8 @@ local auraMonitor = {
 		end
 
 		this:onEvent("UNIT_AURA", update)
+		this:onEvent("PLAYER_TARGET_CHANGED", update)
+		this:onEvent("PLAYER_FOCUS_CHANGED", update)
 
 		return this
 
