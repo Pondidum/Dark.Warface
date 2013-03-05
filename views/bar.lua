@@ -5,68 +5,105 @@ local events = core.events
 local style = core.style
 local ui = core.ui
 
-ns.views.addView("bar", function(name, parent)
 
-	local frame = CreateFrame("Statusbar", name, parent)
-	frame:SetStatusBarTexture(core.textures.normal)
+local round = function(number, decimals)
+	if not decimals then decimals = 0 end
+    return (("%%.%df"):format(decimals)):format(number)
+end
 
-	style.addBackground(frame)
-	style.addShadow(frame)
+local cooldownBar = {
+	
+	new = function(name, parent)
 
-	local cdStart, cdDuration = 0, 0
-	local fill = false
+		local frame = CreateFrame("Statusbar", name, parent)
 
-	local setCooldown = function(start, duration)
-		cdStart = start
-		cdDuration = duration
+		local text = ui.createFont(frame)
+		text:SetAllPoints(frame)
+		text:SetJustifyH("RIGHT")
+		frame.text = text
 
-		frame:SetMinMaxValues(0, duration)
-		frame:Show()
+		local cdStart, cdDuration = 0, 0
+		local fill = false
 
-	end
+		frame.setCooldown = function(start, duration)
+			cdStart = start
+			cdDuration = duration
 
-	local reverseFill = function(value)
-		fill = not value
-	end
+			frame:SetMinMaxValues(0, duration)
+			frame:Show()
 
-	local onUpdate = function()
-
-		local t = GetTime() - cdStart
-
-		if t > cdDuration then
-			frame:Hide()
-
-		elseif fill then
-			frame:SetValue(t)
-
-		else
-			frame:SetValue(cdDuration - t)
-			
 		end
 
+		frame.setReverseFill = function(value)
+			fill = not value
+		end
+
+		frame:SetScript("OnUpdate", function()
+
+			local t = GetTime() - cdStart
+
+			if t > cdDuration then
+				frame:Hide()
+
+			elseif fill then
+				frame:SetValue(t)
+				text:SetText(round(t, 1))
+
+			else
+				frame:SetValue(cdDuration - t)
+				text:SetText(round(cdDuration - t, 1))
+
+			end
+
+		end)
+
+		return frame
+
+	end,
+
+}
+
+ns.views.addView("bar", function(name, parent)
+
+	local container = CreateFrame("Frame", name, parent)
+	style.addBackground(container)
+	style.addShadow(container)
+	
+	local icon = container:CreateTexture()
+	icon:SetPoint("TOPLEFT")
+	icon:SetPoint("BOTTOMLEFT")
+	icon:SetTexCoord(.08, .92, .08, .92)
+	icon:SetWidth(20)
+
+	local bar = cooldownBar.new("TestBar", container)
+	bar:SetStatusBarTexture(core.textures.normal)
+	bar:SetPoint("BOTTOMLEFT", icon, "BOTTOMRIGHT", 0, 0)
+	bar:SetPoint("TOPRIGHT", container, "TOPRIGHT", 0, 0)
+
+
+	local text = ui.createFont(bar)
+	text:SetPoint("TOPLEFT")
+	text:SetPoint("BOTTOMLEFT")
+	text:SetPoint("RIGHT", bar, "CENTER", 0, 0)
+
+	container.showGlow = function() end
+	container.hideGlow = function() end
+
+
+	container.showText = function() end
+	container.hideText = function() end	
+	container.setText = function(value)  end
+	container.setName = function(value) text:SetText(value) end
+
+	container.setIcon = function(value) icon:SetTexture(value) end
+
+	container.showCooldown = function() end
+	container.hideCooldown = function() end
+
+	container.setCooldown = function(start, duration, active, stacks, maxStacks)
+		bar.setCooldown(start, duration)
 	end
 
-	frame:SetScript("OnUpdate", onUpdate)
-	frame.setReverseFill = reverseFill
-
-
-	frame.showGlow = function() end
-	frame.hideGlow = function() end
-
-
-	frame.showText = function() end
-	frame.hideText = function() end	
-	frame.setText = function(value) end
-
-	frame.setIcon = function(value) end
-
-	frame.showCooldown = function() end
-	frame.hideCooldown = function() end
-
-	frame.setCooldown = function(start, duration, active, stacks, maxStacks)
-		setCooldown(start, duration)
-	end
-
-	return frame
+	return container
 
 end)
