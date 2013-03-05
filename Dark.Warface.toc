@@ -20,6 +20,8 @@ controllers\cdAndActiveTextController.lua
 controllers\stacksTextController.lua
 controllers\activeGlowController.lua
 controllers\stacksGlowController.lua
+controllers\activeVisibleController.lua
+controllers\nameTextController.lua
 
 views.lua
 views\icon.lua
