@@ -64,8 +64,9 @@ local config = {
 			target = { 
 				filter = "PLAYER|HARMFUL",
 				customise = function(this)
-					this:SetPoint("BOTTOMLEFT", oUF_DarkUnitFramesTarget, "TOPLEFT", 40, 0)
-					this:SetPoint("BOTTOMRIGHT", oUF_DarkUnitFramesTarget, "TOPLEFT", 40, 0)
+					this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesTarget"], "TOPLEFT", 0, 40)
+					this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesTarget"], "TOPRIGHT", 0, 40)
+					this:SetHeight(50)
 				end,
 			}
 		}
