@@ -54,7 +54,7 @@ local createBar = function(name, parent)
 	end
 
 	bar:SetScript("OnValueChanged", function(s, e) 
-		if e <= 0 then  
+		if tonumber(round(e, 1)) <= 0 then  
 			container:Hide()
 		end
 	end)
@@ -122,18 +122,22 @@ local monitorAuras = function()
 
 				if auraName then
 
-					local view = container.getView(auraName)
-					view.setName(auraName)
-					view.setIcon(auraTexture)
-					view.setCooldown(auraExpires - auraDuration, auraDuration)
+					if auraDuration < 60 then
+						
+						local view = container.getView(auraName)
+						view.setName(auraName)
+						view.setIcon(auraTexture)
+						view.setCooldown(auraExpires - auraDuration, auraDuration)
+						view:Show()
 
-					table.insert(children, view)
+						table.insert(children, view)
+					end
 
 				end
 
 			end
 			
-			table.sort(children, function(a, b) return a.remaining < b.remaining end)
+			table.sort(children, function(a, b) return a.remaining > b.remaining end)
 
 			container.children = sort(children)
 			container.performLayout()
