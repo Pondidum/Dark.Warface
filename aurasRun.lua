@@ -79,16 +79,16 @@ local createDisplays = function()
 
 		unitConfig.customise(container)
 
-		local views = {}
+		container.views = {}
 		local getView = function(name)
 
-			if views[name] then
-				return views[name]
+			if container.views[name] then
+				return container.views[name]
 			end
 
 			local v = createBar("DarkWarfaceAura" ..unit .."Bar"..name, container)
 
-			views[name] = v
+			container.views[name] = v
 			return v
 
 		end
@@ -110,7 +110,7 @@ local monitorAuras = function()
 
 	end
 
-	local onEvent = function()
+	local onUnitAura = function()
 
 		for unit, container in pairs(containers) do
 			
@@ -146,9 +146,26 @@ local monitorAuras = function()
 
 	end
 
-	events.register("UNIT_AURA", nil, onEvent)
-	events.register("PLAYER_TARGET_CHANGED", nil, onEvent)
-	events.register("PLAYER_FOCUS_CHANGED", nil, onEvent)
+	events.register("UNIT_AURA", nil, onUnitAura)
+
+	local onTargetChanged = function()
+
+		for unit, container in pairs(containers) do
+
+			for name, view in pairs(container.views) do
+				view.setCooldown(0, 0)
+			end
+
+			container.children = {}
+			container.performLayout()
+		end
+
+		onUnitAura()
+		
+	end
+
+	events.register("PLAYER_TARGET_CHANGED", nil, onTargetChanged)
+	events.register("PLAYER_FOCUS_CHANGED", nil, onTargetChanged)
 
 end
 
