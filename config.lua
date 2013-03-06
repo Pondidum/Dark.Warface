@@ -69,7 +69,11 @@ local config = {
 					this:SetHeight(50)
 				end,
 			}
+		},
+		filter = {
+			115798,
 		}
+
 	}
 }
 

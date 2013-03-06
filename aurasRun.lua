@@ -122,7 +122,7 @@ local monitorAuras = function()
 
 				if auraName then
 
-					if auraDuration < 60 then
+					if auraDuration < 60 and not config.filter[auraName] then
 						
 						local view = container.getView(auraName)
 						view.setName(auraName)
@@ -161,7 +161,7 @@ local monitorAuras = function()
 		end
 
 		onUnitAura()
-		
+
 	end
 
 	events.register("PLAYER_TARGET_CHANGED", nil, onTargetChanged)
