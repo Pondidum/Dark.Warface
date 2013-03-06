@@ -20,6 +20,8 @@ local createBar = function(name, parent)
 	container:SetHeight(20)
 	style.addBackground(container)
 	style.addShadow(container)
+
+	container.remaining = 0
 	
 	local icon = container:CreateTexture()
 	icon:SetPoint("TOPLEFT")
@@ -38,11 +40,17 @@ local createBar = function(name, parent)
 	text:SetPoint("BOTTOMLEFT")
 	text:SetPoint("RIGHT", bar, "CENTER", 0, 0)
 
-	container.setName = function(value) text:SetText(value) end
-	container.setIcon = function(value) icon:SetTexture(value) end
+	container.setName = function(value) 
+		text:SetText(value)
+	end
+
+	container.setIcon = function(value) 
+		icon:SetTexture(value)
+	end
 
 	container.setCooldown = function(start, duration, active, stacks, maxStacks)
 		bar.setCooldown(start, duration)
+		container.remaining = duration - (GetTime() - start)
 	end
 
 	bar:SetScript("OnValueChanged", function(s, e) 
@@ -55,8 +63,6 @@ local createBar = function(name, parent)
 
 end
 
-
------------------------------
 
 local containers = {}
 
@@ -73,43 +79,50 @@ local createDisplays = function()
 
 		unitConfig.customise(container)
 
+		local views = {}
+		local getView = function(name)
 
-		local cache = core.cache.new(function(i) return createBar("DarkWarfaceAura" ..unit .."Bar"..i, container) end)
+			if views[name] then
+				return views[name]
+			end
 
-		containers[unit] = { container = container, cache = cache, config = unitConfig}
+			local v = createBar("DarkWarfaceAura" ..unit .."Bar"..name, container)
+
+			views[name] = v
+			return v
+
+		end
+
+		container.getView = getView
+		container.config = unitConfig
+
+		containers[unit] = container
 
 	end
 
 end
 
 local monitorAuras = function()
+	
+	local sort = function(children)
 
-	local recycleAll = function(container, cache)
+		return children
 
-		cache.recycleAll()
-
-		--cache.debug()
 	end
 
 	local onEvent = function()
 
-		for unit, unitParts in pairs(containers) do
+		for unit, container in pairs(containers) do
 			
-			local cache = unitParts.cache
-			local container = unitParts.container
-			local conf = unitParts.config
-			
-			recycleAll(container, cache)
-
 			local children = {}
 
 			for i = 1, 20 do
 
-				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura(unit, i, conf.filter)
+				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura(unit, i, container.config.filter)
 
 				if auraName then
 
-					local view = cache.get()
+					local view = container.getView(auraName)
 					view.setName(auraName)
 					view.setIcon(auraTexture)
 					view.setCooldown(auraExpires - auraDuration, auraDuration)
@@ -119,8 +132,10 @@ local monitorAuras = function()
 				end
 
 			end
+			
+			table.sort(children, function(a, b) return a.remaining < b.remaining end)
 
-			container.children = children
+			container.children = sort(children)
 			container.performLayout()
 
 		end
