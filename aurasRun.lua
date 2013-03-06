@@ -8,72 +8,11 @@ local ui = core.ui
 local style = core.style
 
 
-
-
-
-
-
-
-
-
------------------------------
-
 local round = function(number, decimals)
 	if not decimals then decimals = 0 end
     return (("%%.%df"):format(decimals)):format(number)
 end
 
-local cooldownBar = {
-	
-	new = function(name, parent)
-
-		local frame = CreateFrame("Statusbar", name, parent)
-
-		local text = ui.createFont(frame)
-		text:SetAllPoints(frame)
-		text:SetJustifyH("RIGHT")
-		frame.text = text
-
-		local cdStart, cdDuration = 0, 0
-		local fill = false
-
-		frame.setCooldown = function(start, duration)
-			cdStart = start
-			cdDuration = duration
-
-			frame:SetMinMaxValues(0, duration)
-			frame:Show()
-
-		end
-
-		frame.setReverseFill = function(value)
-			fill = not value
-		end
-
-		frame:SetScript("OnUpdate", function()
-
-			local t = GetTime() - cdStart
-
-			if t > cdDuration then
-				frame:Hide()
-
-			elseif fill then
-				frame:SetValue(t)
-				text:SetText(round(t, 1))
-
-			else
-				frame:SetValue(cdDuration - t)
-				text:SetText(round(cdDuration - t, 1))
-
-			end
-
-		end)
-
-		return frame
-
-	end,
-
-}
 
 local createBar = function(name, parent)
 
@@ -88,7 +27,7 @@ local createBar = function(name, parent)
 	icon:SetTexCoord(.08, .92, .08, .92)
 	icon:SetWidth(20)
 
-	local bar = cooldownBar.new("TestBar", container)
+	local bar = ui.createCooldownBar("TestBar", container)
 	bar:SetStatusBarTexture(core.textures.normal)
 	bar:SetPoint("BOTTOMLEFT", icon, "BOTTOMRIGHT", 0, 0)
 	bar:SetPoint("TOPRIGHT", container, "TOPRIGHT", 0, 0)
