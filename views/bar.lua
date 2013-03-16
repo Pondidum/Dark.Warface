@@ -86,19 +86,8 @@ ns.views.addView("bar", function(name, parent)
 	text:SetPoint("BOTTOMLEFT")
 	text:SetPoint("RIGHT", bar, "CENTER", 0, 0)
 
-	container.showGlow = function() end
-	container.hideGlow = function() end
-
-
-	container.showText = function() end
-	container.hideText = function() end	
-	container.setText = function(value)  end
 	container.setName = function(value) text:SetText(value) end
-
 	container.setIcon = function(value) icon:SetTexture(value) end
-
-	container.showCooldown = function() end
-	container.hideCooldown = function() end
 
 	container.setCooldown = function(start, duration, active, stacks, maxStacks)
 		bar.setCooldown(start, duration)
