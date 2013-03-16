@@ -118,11 +118,11 @@ local monitorAuras = function()
 
 			for i = 1, 20 do
 
-				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura(unit, i, container.config.filter)
+				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster = UnitAura(unit, i, container.config.filter)
 
-				if auraName then
+				if auraName and auraDuration and auraDuration ~= 0 and auraExpires and auraExpires ~= 0  then
 
-					if auraDuration < 60 and not config.filter[auraName] then
+					if auraDuration < 60 and not config.filter[auraName] and caster == "player" then
 						
 						local view = container.getView(auraName)
 						view.setName(auraName)
