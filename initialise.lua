@@ -8,14 +8,14 @@ local init = function()
 
 	local ids = {}
 
-	for i, value in ipairs (config.auras.filter) do
+	for i, value in ipairs (config.auras.blacklist) do
 
 		local spellID = GetSpellInfo(value)
 		ids[spellID] = true 
 
 	end
 
-	config.auras.filter = ids
+	config.auras.blacklist = ids
 
 	--Dark.Warface = ns	-- change to lib object later
 

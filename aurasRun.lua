@@ -53,10 +53,8 @@ local createBar = function(name, parent)
 		container.remaining = duration - (GetTime() - start)
 	end
 
-	bar:SetScript("OnValueChanged", function(s, e) 
-		if tonumber(round(e, 1)) <= 0 then  
-			container:Hide()
-		end
+	bar:SetScript("OnHide", function(s, e) 
+		container:Hide()
 	end)
 
 	return container
@@ -122,7 +120,7 @@ local monitorAuras = function()
 
 				if auraName and auraDuration and auraDuration ~= 0 and auraExpires and auraExpires ~= 0  then
 
-					if auraDuration < 60 and not config.filter[auraName] and caster == "player" then
+					if auraDuration < 60 and not config.blacklist[auraName] and caster == "player" then
 						
 						local view = container.getView(auraName)
 						view.setName(auraName)
