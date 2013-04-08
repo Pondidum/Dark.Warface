@@ -78,6 +78,9 @@ local config = {
 					this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesTarget"], "TOPRIGHT", 0, 50)
 					this:SetHeight(50)
 				end,
+				blacklist = {
+					17364
+				}
 			},
 			focus = { 
 				filter = "PLAYER|HARMFUL",
@@ -85,7 +88,7 @@ local config = {
 					this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesFocus"], "TOPLEFT", 0, 50)
 					this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesFocus"], "TOPRIGHT", 0, 50)
 					this:SetHeight(50)
-				end,
+				end
 			},
 			-- player = {
 			-- 	filter = "PLAYER|HELPFUL",

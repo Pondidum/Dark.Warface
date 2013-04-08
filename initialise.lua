@@ -1,23 +1,45 @@
 local addon, ns = ...
 local config = ns.config
 
-local init = function()
 
-	--config processing
-	setmetatable(config.cooldowns.spells, { __index = function(t, v) return {} end})
+local getSpellNameHash = function(ids)
+	
+	local names = {}
 
-	local ids = {}
+	for i, value in ipairs(ids) do
 
-	for i, value in ipairs (config.auras.blacklist) do
-
-		local spellID = GetSpellInfo(value)
-		ids[spellID] = true 
+		local spellName = GetSpellInfo(value)
+		names[spellName] = true 
 
 	end
 
-	config.auras.blacklist = ids
+	return names
+end
 
-	--Dark.Warface = ns	-- change to lib object later
+
+local init = function()
+
+	--make sure all classes return an empty table if they are not specified
+	setmetatable(config.cooldowns.spells, { __index = function(t, v) return {} end})
+
+
+	--copy the base blacklist onto each unit's blacklist
+	local baseBlacklist = getSpellNameHash(config.auras.blacklist)
+	config.auras.blacklist = baseBlacklist
+	
+	for unit, setup in pairs(config.auras.units) do
+
+		local blacklist = getSpellNameHash(setup.blacklist or {})
+
+		for k,v in pairs(baseBlacklist) do
+			blacklist[k] = v
+		end
+
+		setup.blacklist = blacklist
+
+	end
+
+	
 
 	ns.monitors = {}
 

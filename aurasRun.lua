@@ -120,7 +120,7 @@ local monitorAuras = function()
 
 				if auraName and auraDuration and auraDuration ~= 0 and auraExpires and auraExpires ~= 0  then
 
-					if auraDuration < 60 and not config.blacklist[auraName] and caster == "player" then
+					if auraDuration < 60 and not container.config.blacklist[auraName] and caster == "player" then
 						
 						local view = container.getView(auraName)
 						view.setName(auraName)
