@@ -71,47 +71,44 @@ local config = {
 
 	auras = {
 
-		units = { 
-			
-			target = { 
-				filter = "PLAYER|HARMFUL",
-				customise = function(this)
-					this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesTarget"], "TOPLEFT", 0, 50)
-					this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesTarget"], "TOPRIGHT", 0, 50)
-					this:SetHeight(50)
-				end,
-				blacklist = {
-					115798,	--weakened blows
-					17364	--stormstrike
-				}
-			},
+		target = { 
+			filter = "PLAYER|HARMFUL",
+			customise = function(this)
+				this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesTarget"], "TOPLEFT", 0, 50)
+				this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesTarget"], "TOPRIGHT", 0, 50)
+				this:SetHeight(50)
+			end,
+			blacklist = {
+				115798,	--weakened blows
+				17364	--stormstrike
+			}
+		},
 
-			focus = { 
-				filter = "PLAYER|HARMFUL",
-				customise = function(this)
-					this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesFocus"], "TOPLEFT", 0, 50)
-					this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesFocus"], "TOPRIGHT", 0, 50)
-					this:SetHeight(50)
-				end,
-				blacklist = {
-					115798,	--weakened blows
-					17364	--stormstrike
-				}
-			},
+		focus = { 
+			filter = "PLAYER|HARMFUL",
+			customise = function(this)
+				this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesFocus"], "TOPLEFT", 0, 50)
+				this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesFocus"], "TOPRIGHT", 0, 50)
+				this:SetHeight(50)
+			end,
+			blacklist = {
+				115798,	--weakened blows
+				17364	--stormstrike
+			}
+		},
 
-			player = {
-				filter = "PLAYER|HELPFUL",
-				customise = function(this)
-					this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesPlayer"], "TOPLEFT", 0, 50)
-					this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesPlayer"], "TOPRIGHT", 0, 50)
-					this:SetHeight(50)
-				end,
-				mode = "WHITELIST",
-				whitelist = {
-					77535,				--blood shield
-				},
-			}	
-		}
+		player = {
+			filter = "PLAYER|HELPFUL",
+			customise = function(this)
+				this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesPlayer"], "TOPLEFT", 0, 50)
+				this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesPlayer"], "TOPRIGHT", 0, 50)
+				this:SetHeight(50)
+			end,
+			mode = "WHITELIST",
+			whitelist = {
+				77535,				--blood shield
+			},
+		},
 
 	}
 }

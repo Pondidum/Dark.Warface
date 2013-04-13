@@ -34,7 +34,7 @@ local init = function()
 	setmetatable(config.cooldowns.spells, { __index = function(t, v) return {} end})
 
 	--change spellids into spellnames
-	for unit, setup in pairs(config.auras.units) do
+	for unit, setup in pairs(config.auras) do
 
 		setup.blacklist = getSpellNameHash(setup.blacklist or {})
 		setup.whitelist = getSpellNameHash(setup.whitelist or {})

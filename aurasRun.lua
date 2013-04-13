@@ -66,7 +66,7 @@ local containers = {}
 
 local createDisplays = function()
 
-	for unit, unitConfig in pairs(config.units) do
+	for unit, unitConfig in pairs(config) do
 		
 		local container = CreateFrame("Frame", "DarkWarfaceAura" .. unit, UIParent)
 		layout.init(container, {
