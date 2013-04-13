@@ -41,7 +41,7 @@ local config = {
 			DRUID = {
 				{ type = "spell",	args = 78674 }
 			},
-
+			--[[
 			PALADIN = {
 				{ type = "spell", 	args = 20271 },			--judgement
 				{ type = "spell", 	args = 35395 },			--crusader strike
@@ -49,7 +49,8 @@ local config = {
 				{ type = "spell", 	args = 879 },			--exorcism
 				{ type = "spell", 	args = 24275 },			--hammer of wrath
 			},
-
+			]]
+			
 			SHAMAN = {
 				{ type = "spell", 	args = 2062 },			--earth elemental
 				{ type = "spell", 	args = 120668 },		--stormlash
@@ -71,6 +72,7 @@ local config = {
 	auras = {
 
 		units = { 
+			
 			target = { 
 				filter = "PLAYER|HARMFUL",
 				customise = function(this)
@@ -79,28 +81,36 @@ local config = {
 					this:SetHeight(50)
 				end,
 				blacklist = {
-					17364
+					115798,	--weakened blows
+					17364	--stormstrike
 				}
 			},
+
 			focus = { 
 				filter = "PLAYER|HARMFUL",
 				customise = function(this)
 					this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesFocus"], "TOPLEFT", 0, 50)
 					this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesFocus"], "TOPRIGHT", 0, 50)
 					this:SetHeight(50)
-				end
+				end,
+				blacklist = {
+					115798,	--weakened blows
+					17364	--stormstrike
+				}
 			},
-			-- player = {
-			-- 	filter = "PLAYER|HELPFUL",
-			-- 	customise = function(this)
-			-- 		this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesPlayer"], "TOPLEFT", 0, 50)
-			-- 		this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesPlayer"], "TOPRIGHT", 0, 50)
-			-- 		this:SetHeight(50)
-			-- 	end,
-			-- }	
-		},
-		blacklist = {
-			115798,
+
+			player = {
+				filter = "PLAYER|HELPFUL",
+				customise = function(this)
+					this:SetPoint("BOTTOMLEFT", _G["oUF_DarkUnitFramesPlayer"], "TOPLEFT", 0, 50)
+					this:SetPoint("BOTTOMRIGHT", _G["oUF_DarkUnitFramesPlayer"], "TOPRIGHT", 0, 50)
+					this:SetHeight(50)
+				end,
+				mode = "WHITELIST",
+				whitelist = {
+					77535,				--blood shield
+				},
+			}	
 		}
 
 	}

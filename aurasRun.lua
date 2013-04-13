@@ -100,27 +100,36 @@ local createDisplays = function()
 
 end
 
+local checkWhiteList = function(config, auraName)
+	return config.whitelist[auraName]
+end
+
+local checkBlackList = function(config, auraName)
+	return not config.blacklist[auraName]
+end
+
 local monitorAuras = function()
 	
 	local sort = function(children)
-
 		return children
-
 	end
 
 	local onUnitAura = function()
 
 		for unit, container in pairs(containers) do
 			
+			local containerConfig = container.config
+
+			local check = containerConfig.mode == "WHITELIST" and checkWhiteList or checkBlackList
 			local children = {}
 
 			for i = 1, 20 do
 
-				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster = UnitAura(unit, i, container.config.filter)
+				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster = UnitAura(unit, i, containerConfig.filter)
 
 				if auraName and auraDuration and auraDuration ~= 0 and auraExpires and auraExpires ~= 0  then
 
-					if auraDuration < 60 and not container.config.blacklist[auraName] and caster == "player" then
+					if auraDuration < 60 and caster == "player" and check(containerConfig, auraName) then
 						
 						local view = container.getView(auraName)
 						view.setName(auraName)

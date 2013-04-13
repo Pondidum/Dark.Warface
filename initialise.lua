@@ -1,6 +1,17 @@
 local addon, ns = ...
 local config = ns.config
 
+local auraBase = {
+	filter = "PLAYER|HARMFUL",
+	customise = function(this)
+		this:SetPoint("CENTER", _G["UIParent"], "CENTER", 0, 0)
+		this:SetHeight(50)
+	end,
+
+	mode = "BLACKLIST",
+	blacklist = {},
+	whitelist = {},
+}
 
 local getSpellNameHash = function(ids)
 	
@@ -22,20 +33,13 @@ local init = function()
 	--make sure all classes return an empty table if they are not specified
 	setmetatable(config.cooldowns.spells, { __index = function(t, v) return {} end})
 
-
-	--copy the base blacklist onto each unit's blacklist
-	local baseBlacklist = getSpellNameHash(config.auras.blacklist)
-	config.auras.blacklist = baseBlacklist
-	
+	--change spellids into spellnames
 	for unit, setup in pairs(config.auras.units) do
 
-		local blacklist = getSpellNameHash(setup.blacklist or {})
+		setup.blacklist = getSpellNameHash(setup.blacklist or {})
+		setup.whitelist = getSpellNameHash(setup.whitelist or {})
 
-		for k,v in pairs(baseBlacklist) do
-			blacklist[k] = v
-		end
-
-		setup.blacklist = blacklist
+		setmetatable(setup, { __index = auraBase })
 
 	end
 
