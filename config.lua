@@ -106,7 +106,8 @@ local config = {
 			end,
 			mode = "WHITELIST",
 			whitelist = {
-				77535,				--blood shield
+				77535,				-- dk - blood shield
+				20925,				-- paladin - sacred shield
 			},
 		},
 

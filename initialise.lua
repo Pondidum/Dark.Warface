@@ -13,18 +13,15 @@ local auraBase = {
 	whitelist = {},
 }
 
-local getSpellNameHash = function(ids)
+local convertToHash = function(ids)
 	
-	local names = {}
+	local hash = {}
 
 	for i, value in ipairs(ids) do
-
-		local spellName = GetSpellInfo(value)
-		names[spellName] = true 
-
+		hash[value] = true 
 	end
 
-	return names
+	return hash
 end
 
 
@@ -36,8 +33,8 @@ local init = function()
 	--change spellids into spellnames
 	for unit, setup in pairs(config.auras) do
 
-		setup.blacklist = getSpellNameHash(setup.blacklist or {})
-		setup.whitelist = getSpellNameHash(setup.whitelist or {})
+		setup.blacklist = convertToHash(setup.blacklist or {})
+		setup.whitelist = convertToHash(setup.whitelist or {})
 
 		setmetatable(setup, { __index = auraBase })
 
