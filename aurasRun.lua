@@ -3,17 +3,6 @@ local config = ns.config
 
 local core = Dark.core
 local events = core.events
-local layout = core.layout
-local ui = core.ui
-local style = core.style
-
-
--- local round = function(number, decimals)
--- 	if not decimals then decimals = 0 end
---     return (("%%.%df"):format(decimals)):format(number)
--- end
-
-
 
 
 local containers = {}
@@ -67,7 +56,7 @@ end
 
 					if auraDuration < 60 and caster == "player" and check(auraConfig, spellID) then
 						
-						local view = container.getView(auraName)
+						local view = container.getView(spellID)
 						view.setName(auraName)
 						view.setIcon(auraTexture)
 						view.setCooldown(auraExpires - auraDuration, auraDuration)
