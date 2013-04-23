@@ -65,6 +65,7 @@ local init = function()
 
 
 	ns.monitors = {}
+	ns.auras = {}
 
 
 end

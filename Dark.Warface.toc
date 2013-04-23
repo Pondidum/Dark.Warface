@@ -28,5 +28,10 @@ views.lua
 views\icon.lua
 views\bar.lua
 
+
+auras\barView.lua
+auras\unitView.lua
+
+
 run.lua
 aurasRun.lua
