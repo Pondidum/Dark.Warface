@@ -6,6 +6,7 @@
 ## RequiredDeps: Dark.Core
 
 config.lua
+config.displays.lua
 initialise.lua
 
 monitor.lua

@@ -1,5 +1,5 @@
 local addon, ns = ...
-local config = ns.config.auras
+local config = ns.config
 
 local core = Dark.core
 local events = core.events
@@ -66,7 +66,7 @@ local containers = {}
 
 local createDisplays = function()
 
-	for unit, unitConfig in pairs(config) do
+	for unit, displayConfig in pairs(config.auraDisplays) do
 		
 		local container = CreateFrame("Frame", "DarkWarfaceAura" .. unit, UIParent)
 		layout.init(container, {
@@ -75,7 +75,9 @@ local createDisplays = function()
 			autosize = true,
 		})
 
-		unitConfig.customise(container)
+		for i, anchorConfig in pairs(displayConfig.anchors) do
+			container:SetPoint(unpack(anchorConfig))
+		end
 
 		container.views = {}
 		local getView = function(name)
@@ -92,7 +94,6 @@ local createDisplays = function()
 		end
 
 		container.getView = getView
-		container.config = unitConfig
 
 		containers[unit] = container
 
@@ -101,40 +102,43 @@ local createDisplays = function()
 end
 
 local checkWhiteList = function(config, spellID)
-	return config.whitelist[spellID]
+	return config[spellID]
 end
 
 local checkBlackList = function(config, spellID)
-	return not config.blacklist[spellID]
+	return not config[spellID]
 end
 
-local monitorAuras = function()
+ local monitorAuras = function()
 	
-	local sort = function(children)
-		return children
-	end
+
+	local playerClass = UnitClass("player")
+	local playerSpecID, playerSpec = GetSpecializationInfo(GetSpecialization())
+
+	local specConfig = config.classConfig[playerClass][playerSpec]
 
 	local onUnitAura = function()
 
 		for unit, container in pairs(containers) do
 			
-			local containerConfig = container.config
+			local auraConfig = specConfig.auras[unit]
 
-			local check = containerConfig.mode == "WHITELIST" and checkWhiteList or checkBlackList
+			local check = auraConfig.mode == "WHITELIST" and checkWhiteList or checkBlackList
 			local children = {}
 
 			for i = 1, 20 do
 
-				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster, isStealable, shouldConsolidate, spellID = UnitAura(unit, i, containerConfig.filter)
+				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster, isStealable, shouldConsolidate, spellID = UnitAura(unit, i, auraConfig.filter)
 
 				if auraName and auraDuration and auraDuration ~= 0 and auraExpires and auraExpires ~= 0  then
 
-					if auraDuration < 60 and caster == "player" and check(containerConfig, spellID) then
+					if auraDuration < 60 and caster == "player" and check(auraConfig, spellID) then
 						
 						local view = container.getView(auraName)
 						view.setName(auraName)
 						view.setIcon(auraTexture)
 						view.setCooldown(auraExpires - auraDuration, auraDuration)
+
 						view:Show()
 
 						table.insert(children, view)
@@ -146,33 +150,33 @@ local monitorAuras = function()
 			
 			table.sort(children, function(a, b) return a.remaining > b.remaining end)
 
-			container.children = sort(children)
+			container.children = children
 			container.performLayout()
 
 		end
 
 	end
 
-	events.register("UNIT_AURA", nil, onUnitAura)
+ 	events.register("UNIT_AURA", nil, onUnitAura)
 
-	local onTargetChanged = function()
+-- 	local onTargetChanged = function()
 
-		for unit, container in pairs(containers) do
+-- 		for unit, container in pairs(containers) do
 
-			for name, view in pairs(container.views) do
-				view.setCooldown(0, 0)
-			end
+-- 			for name, view in pairs(container.views) do
+-- 				view.setCooldown(0, 0)
+-- 			end
 
-			container.children = {}
-			container.performLayout()
-		end
+-- 			container.children = {}
+-- 			container.performLayout()
+-- 		end
 
-		onUnitAura()
+-- 		onUnitAura()
 
-	end
+-- 	end
 
-	events.register("PLAYER_TARGET_CHANGED", nil, onTargetChanged)
-	events.register("PLAYER_FOCUS_CHANGED", nil, onTargetChanged)
+-- 	events.register("PLAYER_TARGET_CHANGED", nil, onTargetChanged)
+-- 	events.register("PLAYER_FOCUS_CHANGED", nil, onTargetChanged)
 
 end
 
