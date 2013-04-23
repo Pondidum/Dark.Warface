@@ -159,24 +159,24 @@ end
 
  	events.register("UNIT_AURA", nil, onUnitAura)
 
--- 	local onTargetChanged = function()
+	local onTargetChanged = function()
 
--- 		for unit, container in pairs(containers) do
+		for unit, container in pairs(containers) do
 
--- 			for name, view in pairs(container.views) do
--- 				view.setCooldown(0, 0)
--- 			end
+			for name, view in pairs(container.views) do
+				view.setCooldown(0, 0)
+			end
 
--- 			container.children = {}
--- 			container.performLayout()
--- 		end
+			container.children = {}
+			container.performLayout()
+		end
 
--- 		onUnitAura()
+		onUnitAura()
 
--- 	end
+	end
 
--- 	events.register("PLAYER_TARGET_CHANGED", nil, onTargetChanged)
--- 	events.register("PLAYER_FOCUS_CHANGED", nil, onTargetChanged)
+	events.register("PLAYER_TARGET_CHANGED", nil, onTargetChanged)
+	events.register("PLAYER_FOCUS_CHANGED", nil, onTargetChanged)
 
 end
 
