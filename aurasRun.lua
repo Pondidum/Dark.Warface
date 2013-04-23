@@ -5,23 +5,8 @@ local core = Dark.core
 local events = core.events
 
 
-local containers = {}
+local containers = ns.auras.viewController.new()
 
-local createDisplays = function()
-
-	for unit, displayConfig in pairs(config.auraDisplays) do
-		
-		local container = ns.auras.createUnitView(unit)
-
-		for i, anchorConfig in pairs(displayConfig.anchors) do
-			container:SetPoint(unpack(anchorConfig))
-		end
-
-		containers[unit] = container
-
-	end
-
-end
 
 local checkWhiteList = function(config, spellID)
 	return config[spellID]
@@ -41,7 +26,7 @@ end
 
 	local onUnitAura = function()
 
-		for unit, container in pairs(containers) do
+		for unit, container in pairs(containers.getUnitViews()) do
 			
 			local auraConfig = specConfig.auras[unit]
 
@@ -83,13 +68,7 @@ end
 
 	local onTargetChanged = function()
 
-		for unit, container in pairs(containers) do
-
-			container.resetViews()
-
-			container.children = {}
-			container.performLayout()
-		end
+		containers.resetDisplays()
 
 		onUnitAura()
 
@@ -104,8 +83,10 @@ end
 
 
 local onPlayerLogin = function()
-	createDisplays()
+
+	containers.createDisplays(config.auraDisplays)
 	monitorAuras()
+
 end
 
 events.register("PLAYER_LOGIN", nil, onPlayerLogin)

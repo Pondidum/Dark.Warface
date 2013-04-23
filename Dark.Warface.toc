@@ -31,6 +31,7 @@ views\bar.lua
 
 auras\barView.lua
 auras\unitView.lua
+auras\viewController.lua
 
 
 run.lua
