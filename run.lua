@@ -94,4 +94,13 @@ local events = core.events
 
 -- events.register("PLAYER_LOGIN", nil, onPlayerLogin)
 
+local auras = ns.auras.viewModel.new()
+
+local onPlayerLogin = function()
+	
+	auras.run()	
+
+end
+
+events.register("PLAYER_LOGIN", nil, onPlayerLogin)
 Dark.warface = ns
