@@ -30,7 +30,7 @@ views\bar.lua
 
 
 auras\barView.lua
-auras\unitView.lua
+auras\containerView.lua
 auras\viewController.lua
 auras\viewModel.lua
 

@@ -11,7 +11,7 @@ local viewController = {
 
 			for unit, displayConfig in pairs(displays) do
 				
-				local container = ns.auras.createUnitView(unit)
+				local container = ns.auras.containerView.new(unit)
 
 				for i, anchorConfig in pairs(displayConfig.anchors) do
 					container:SetPoint(unpack(anchorConfig))
