@@ -20,17 +20,34 @@ local combineTables = function(base, specific)
 
 end
 
+local processAuraConfig = function(specConfig)
+
+	local baseAuraConfig = config.specBase.auras
+	local auraConfig = specConfig.auras
+
+	--handle unspecified units
+	setmetatable(auraConfig, { __index = config.specBase.auras })
+
+	auraConfig.player = combineTables(baseAuraConfig.player, auraConfig.player)
+	auraConfig.target = combineTables(baseAuraConfig.target, auraConfig.target)
+	auraConfig.focus = combineTables(baseAuraConfig.focus, auraConfig.focus)	
+
+end
+
+local processCooldownConfig = function(specConfig)
+
+end
+
 local processConfig = function()
 	
 	-- use a default value for unspecified classes
 	config.classConfig.default = {}
+
 	setmetatable(config.classConfig, { __index = function(t, k) 
 		return t.default 
 	end })
 
 	for class, classConfig in pairs(config.classConfig) do
-
-		print("class", class)
 
 		--handle unspecified specs
 		setmetatable(classConfig, { __index = function(t, k)
@@ -43,15 +60,8 @@ local processConfig = function()
 			--handle unspecified elements
 			setmetatable(specConfig, { __index = config.specBase })
 
-			local baseAuraConfig = config.specBase.auras
-			local auraConfig = specConfig.auras
-
-			--handle unspecified units
-			setmetatable(auraConfig, { __index = config.specBase.auras })
-			
-			auraConfig.player = combineTables(baseAuraConfig.player, auraConfig.player)
-			auraConfig.target = combineTables(baseAuraConfig.target, auraConfig.target)
-			auraConfig.focus = combineTables(baseAuraConfig.focus, auraConfig.focus)	
+			processAuraConfig(specConfig)
+			processCooldownConfig(specConfig)
 
 		end		
 
@@ -66,6 +76,7 @@ local init = function()
 
 	ns.monitors = {}
 	ns.auras = {}
+	ns.alerts = {}
 
 
 end
