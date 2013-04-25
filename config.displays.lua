@@ -3,14 +3,14 @@ local addon, ns = ...
 ns.config = ns.config or {}
 
 ns.config.alertDisplayBase = { 
-	container = "default", 
+	container = "cooldowns", 
 	controllers = { "cdAndActiveText", "activeGlow" }, 
 	spec = "ALL"
 }
 
 ns.config.alertDisplays  = {
 
-	default = {
+	cooldowns = {
 		autosize = true, 
 		marginLeft = 3, 
 		marginRight = 3,
@@ -18,9 +18,11 @@ ns.config.alertDisplays  = {
 		defaultChildHeight = 25,
 		forceChildSize = true,
 		childView = "icon",
-		customise = function(parent, this)
-			this:SetPoint("CENTER", DarkuiFrame, "CENTER", 0, -100)
-		end,
+
+		anchors = {
+			{"CENTER", "DarkuiFrame", "CENTER", 0, -100},
+		},
+
 	},
 
 	rotation = {
@@ -31,9 +33,11 @@ ns.config.alertDisplays  = {
 		defaultChildHeight = 32,
 		forceChildSize = true,
 		childView = "icon",
-		customise = function(parent, this)
-			this:SetPoint("CENTER", DarkuiFrame, "CENTER", 0, -140)
-		end,
+
+		anchors = {
+			{"CENTER", "DarkuiFrame", "CENTER", 0, -140},
+		},
+
 	},
 
 }
