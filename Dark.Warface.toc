@@ -28,6 +28,10 @@ views.lua
 views\icon.lua
 views\bar.lua
 
+alerts\alertView.lua
+alerts\containerView.lua
+alerts\viewController.lua
+alerts\viewModel.lua
 
 auras\barView.lua
 auras\containerView.lua

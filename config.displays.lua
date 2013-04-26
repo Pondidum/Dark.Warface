@@ -5,7 +5,6 @@ ns.config = ns.config or {}
 ns.config.alertDisplayBase = { 
 	container = "cooldowns", 
 	controllers = { "cdAndActiveText", "activeGlow" }, 
-	spec = "ALL"
 }
 
 ns.config.alertDisplays  = {
