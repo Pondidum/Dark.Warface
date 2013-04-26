@@ -34,8 +34,8 @@ local processAuraConfig = function(specConfig)
 
 end
 
-local processCooldownConfig = function(specConfig)
-
+local processAlertConfig = function(specConfig)
+	
 end
 
 local processConfig = function()
@@ -61,7 +61,7 @@ local processConfig = function()
 			setmetatable(specConfig, { __index = config.specBase })
 
 			processAuraConfig(specConfig)
-			processCooldownConfig(specConfig)
+			processAlertConfig(specConfig)
 
 		end		
 
