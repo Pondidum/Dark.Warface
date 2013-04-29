@@ -27,6 +27,16 @@ ns.config.specBase = {
 
 ns.config.classConfig = {
 	
+	DEATHKNIGHT = {
+		["Blood"] = {
+			alerts = {
+				cooldowns = {
+					{ type = "spell", args = 48707 }
+				}
+			}
+		}
+	},
+
 	DRUID = {
 		["Balance"] = {
 			alerts = {

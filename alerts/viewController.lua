@@ -11,7 +11,7 @@ local viewController = {
 
 			for name, displayConfig in pairs(config) do
 
-				local container = ns.alerts.containerView.new(unit, displayConfig)
+				local container = ns.alerts.containerView.new(name, displayConfig)
 
 				for i, anchorConfig in pairs(displayConfig.anchors) do
 					container:SetPoint(unpack(anchorConfig))

@@ -1,12 +1,16 @@
 local addon, ns = ...
 
 local alerts = ns.alerts
+local config = ns.config
+
+local core = Dark.core
+local cache = core.cache
 
 local viewModel = {
 	
 	new = function()
 		
-		local monitors = alerts.monitorController.new()
+		local monitors = alerts.monitorFactory.new()
 		local containers = alerts.viewController.new()
 
 		local alertViews = cache.new(function(i) return alerts.alertView.new("DarkWarface" .. i, UIParent) end)
@@ -19,30 +23,34 @@ local viewModel = {
 
 			for containerName, containerConfig in pairs(alertConfig) do
 				
-					local container = containers[containerName]
+				local container = containers[containerName]
 
-					--local model = ns.monitors[entry.type].new(parseArgs(entry.args))
-					local view = alertviews.get()
+				for i, alertData in ipairs(containerConfig) do
+					
+					local model = monitors.get(alertData.type).new(alertData.args)
+					local view = alertViews.get()
 
-					--ns.controller.factory(model, view, entry.controllers, entry.extra)
+					alerts.controller.factory(model, view)
 
 					container.add(view)
 
-					--table.insert(models, model)
+				end
 
-				
 			end
+
 		end
+
 		local onSpecChanged = function()
 
-			local playerClass = UnitClass("player")
+			local dontCare, playerClass = UnitClass("player")
 			local playerSpecID, playerSpec = GetSpecializationInfo(GetSpecialization())
 
 			specConfig = config.classConfig[playerClass][playerSpec]
 
-			alertView.recycleAll()
-			models.recycleAll()
+			alertViews.recycleAll()
+			monitors.recycleAll()
 
+			buildDisplays()
 
 		end
 
@@ -52,7 +60,8 @@ local viewModel = {
 
 		this.run = function()
 
-			containers.createDisplays(config.alertDIsplays)
+			containers.createDisplays(config.alertDisplays)
+			onSpecChanged()
 
 		end
 
