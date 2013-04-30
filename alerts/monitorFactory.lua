@@ -29,8 +29,8 @@ local monitorFactory = {
 
 	end,
 
-	register = function()
-
+	register = function(type, action)
+		monitors[type] = action
 	end,
 
 }

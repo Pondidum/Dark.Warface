@@ -64,4 +64,4 @@ local macroMonitor = {
 
 }
 
-ns.monitors["macro"] = macroMonitor
+ns.alerts.monitorFactory.register("macro", macroMonitor)

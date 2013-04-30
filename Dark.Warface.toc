@@ -9,12 +9,6 @@ config.lua
 config.displays.lua
 initialise.lua
 
-monitor.lua
-monitors\itemMonitor.lua
-monitors\macroMonitor.lua
-monitors\spellMonitor.lua
-monitors\totemMonitor.lua
-monitors\auraMonitor.lua
 
 controller.lua
 controllers\cdAndActiveTextController.lua
@@ -33,6 +27,14 @@ alerts\containerView.lua
 alerts\viewController.lua
 alerts\monitorFactory.lua
 alerts\viewModel.lua
+
+alerts\monitor.lua
+alerts\monitors\itemMonitor.lua
+alerts\monitors\macroMonitor.lua
+alerts\monitors\spellMonitor.lua
+alerts\monitors\totemMonitor.lua
+alerts\monitors\auraMonitor.lua
+
 
 auras\barView.lua
 auras\containerView.lua

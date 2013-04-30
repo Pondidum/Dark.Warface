@@ -47,5 +47,4 @@ local auraMonitor = {
 
 }
 
-
-ns.monitors["aura"] = auraMonitor
+ns.alerts.monitorFactory.register("aura", auraMonitor)
