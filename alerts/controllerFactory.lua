@@ -11,9 +11,13 @@ local controllerFactory = {
 
 		this.bind = function(model, view, config)
 
+			model:addListener("texture", function(m) view.setIcon(m.texture) end)
+			
 			for i, name in ipairs(config) do
 				
+
 				local c = controllers[string.lower(name)]	
+				print("Finding controller", name, c)
 
 				if c then
 					c(model, view)
@@ -28,6 +32,7 @@ local controllerFactory = {
 
 	register = function(name, action)
 
+		print("Registering controller", name)
 		controllers[string.lower(name)] = action
 
 	end,

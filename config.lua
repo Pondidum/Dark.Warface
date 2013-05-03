@@ -4,8 +4,12 @@ ns.config = ns.config or {}
 
 ns.config.specBase = {
 	alerts = {
-		cooldowns = {},
-		rotation = {},
+		cooldowns = {
+			controllers = { "cdAndActiveText", "activeGlow" }
+		},
+		rotation = {
+			controllers = { "cdAndActiveText", "activeGlow" }
+		},
 	},
 	auras = {
 		player = {

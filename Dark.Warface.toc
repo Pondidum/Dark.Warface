@@ -18,6 +18,7 @@ views\bar.lua
 
 alerts\alertView.lua
 alerts\containerView.lua
+alerts\controllerFactory.lua
 alerts\viewController.lua
 alerts\monitorFactory.lua
 alerts\viewModel.lua

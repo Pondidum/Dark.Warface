@@ -1,7 +1,7 @@
 local addon, ns = ...
 local config = ns.config
 
-local combineTables = function(base, specific)
+local combineAuraTables = function(base, specific)
 	
 	local output = {}
 
@@ -20,6 +20,28 @@ local combineTables = function(base, specific)
 
 end
 
+local combineControllers = function(base, specific)
+	
+	local combined = {}
+
+	for i,v in ipairs(base) do
+		combined[v] = true
+	end
+
+	for i,v in ipairs(specific) do
+		combined[v] = true
+	end
+
+	local output = {}
+
+	for k,v in pairs(combined) do
+		table.insert(output, k)
+	end
+
+	return output
+
+end
+
 local processAuraConfig = function(specConfig)
 
 	local baseAuraConfig = config.specBase.auras
@@ -28,14 +50,46 @@ local processAuraConfig = function(specConfig)
 	--handle unspecified units
 	setmetatable(auraConfig, { __index = config.specBase.auras })
 
-	auraConfig.player = combineTables(baseAuraConfig.player, auraConfig.player)
-	auraConfig.target = combineTables(baseAuraConfig.target, auraConfig.target)
-	auraConfig.focus = combineTables(baseAuraConfig.focus, auraConfig.focus)	
+	auraConfig.player = combineAuraTables(baseAuraConfig.player, auraConfig.player)
+	auraConfig.target = combineAuraTables(baseAuraConfig.target, auraConfig.target)
+	auraConfig.focus = combineAuraTables(baseAuraConfig.focus, auraConfig.focus)	
 
 end
 
 local processAlertConfig = function(specConfig)
+
+	local alerts = specConfig.alerts
+	local base = config.specBase.alerts
+
+	for displayName, items in pairs(alerts) do
+		
+		local baseControllers = base[displayName].controllers
+
+		for i, alert in ipairs(items) do
+			
+			alert.controllers = combineControllers(baseControllers, alert.controllers or {})
+
+		end
+
+	end
+	--[[
+	local baseAlertConfig = config.specBase.alerts
 	
+
+	for name, alertDisplay in pairs(alerts) do
+		
+		local baseControllers = baseAlertConfig[name].controllers
+
+		if baseControllers then
+
+			for i, alert in pairs(alertDisplay) do
+				print(alert.type)
+			end
+		end
+
+	end
+	]]
+
 end
 
 local processConfig = function()

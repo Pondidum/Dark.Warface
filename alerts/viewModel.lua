@@ -31,7 +31,7 @@ local viewModel = {
 					local model = monitors.get(alertData.type).new(alertData.args)
 					local view = alertViews.get()
 
-					controllerFactory.bind(model, view, alertConfig.controllers)
+					controllerFactory.bind(model, view, alertData.controllers)
 					
 					model:forceUpdate()
 					
