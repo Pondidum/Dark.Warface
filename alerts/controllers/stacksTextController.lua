@@ -1,6 +1,7 @@
 local addon, ns = ...
+local alerts = ns.alerts
 
-ns.controller.add("stacksText", function(monitor, display, extra)
+alerts.controllerFactory.register("stacksText", function(monitor, display, extra)
 			
 	display.hideCooldown()
 	display.showText()

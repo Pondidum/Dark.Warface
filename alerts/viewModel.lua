@@ -12,6 +12,7 @@ local viewModel = {
 		
 		local monitors = alerts.monitorFactory.new()
 		local containers = alerts.viewController.new()
+		local controllerFactory = alerts.controllerFactory.new()
 
 		local alertViews = cache.new(function(i) return alerts.alertView.new("DarkWarface" .. i, UIParent) end)
 		local specConfig
@@ -30,8 +31,10 @@ local viewModel = {
 					local model = monitors.get(alertData.type).new(alertData.args)
 					local view = alertViews.get()
 
-					alerts.controller.factory(model, view)
-
+					controllerFactory.bind(model, view, alertConfig.controllers)
+					
+					model:forceUpdate()
+					
 					container.add(view)
 
 				end
