@@ -60,5 +60,4 @@ local spellMonitor = {
 
 }
 
-
-ns.monitors["spell"] = spellMonitor
+ns.alerts.monitorFactory.register("spell", spellMonitor)

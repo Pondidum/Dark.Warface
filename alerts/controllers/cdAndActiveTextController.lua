@@ -1,6 +1,7 @@
 local addon, ns = ...
+local alerts = ns.alerts
 
-ns.controller.add("cdAndActiveText", function(monitor, display, extra)
+alerts.controllerFactory.register("cdAndActiveText", function(monitor, display, extra)
 	
 	display.showCooldown()
 	display.hideText()

@@ -1,6 +1,7 @@
 local addon, ns = ...
+local alerts = ns.alerts
 
-ns.controller.add("stacksGlow", function(monitor, display, extra)
+alerts.controllerFactory.register("stacksGlow", function(monitor, display, extra)
 	
 	monitor:addListener("stacksGlowController", function(m)
 

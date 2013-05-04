@@ -38,4 +38,4 @@ local totemMonitor = {
 
 }
 
-ns.monitors["totem"] = totemMonitor
+ns.alerts.monitorFactory.register("totem", totemMonitor)

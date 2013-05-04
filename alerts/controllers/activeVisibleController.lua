@@ -1,6 +1,7 @@
 local addon, ns = ...
+local alerts = ns.alerts
 
-ns.controller.add("activeVisible", function(monitor, display, extra)
+alerts.controllerFactory.register("activeVisible", function(monitor, display, extra)
 	
 	monitor:addListener("activeVisibleController", function(m)
 

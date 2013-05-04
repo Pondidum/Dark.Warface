@@ -52,4 +52,4 @@ local itemMonitor = {
 
 }
 
-ns.monitors["item"] = itemMonitor
+ns.alerts.monitorFactory.register("item", itemMonitor)
