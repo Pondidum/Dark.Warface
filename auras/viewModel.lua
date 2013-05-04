@@ -21,7 +21,7 @@ local viewModel = {
 
 		local onSpecChanged = function()
 
-			local playerClass = UnitClass("player")
+			local _, playerClass = UnitClass("player")
 			local playerSpecID, playerSpec = GetSpecializationInfo(GetSpecialization())
 
 			specConfig = config.classConfig[playerClass][playerSpec]
