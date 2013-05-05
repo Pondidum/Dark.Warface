@@ -7,14 +7,8 @@
 
 config.lua
 config.displays.lua
+
 initialise.lua
-
-
-controller.lua
-
-views.lua
-views\icon.lua
-views\bar.lua
 
 alerts\alertView.lua
 alerts\containerView.lua
