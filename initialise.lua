@@ -48,7 +48,7 @@ local combineSpecTablesWithBase = function()
 	for className, classSpecs in pairs(config.classConfig) do
 		
 		--use base data for unspecified specs
-		setmetatable(classSpecs, { __index = base })
+		setmetatable(classSpecs, { __index = function() return base end })
 
 		--rollup base data into spec data
 		for specName, specConfig in pairs(classSpecs) do
