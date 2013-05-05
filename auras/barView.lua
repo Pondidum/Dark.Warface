@@ -40,6 +40,10 @@ local barView = {
 			icon:SetTexture(value)
 		end
 
+		container.setColor = function(r, g, b)
+			bar:SetStatusBarColor(r, g, b)
+		end
+
 		container.setCooldown = function(start, duration, active, stacks, maxStacks)
 			bar.setCooldown(start, duration)
 			container.remaining = duration - (GetTime() - start)
