@@ -16,6 +16,10 @@ ns.config.specBase = {
 			mode = "WHITELIST",
 			filter = "PLAYER|HELPFUL",
 		},
+		pet = {
+			mode = "WHITELIST",
+			filter = "PLAYER|HELPFUL",
+		},
 		target = {
 			mode = "BLACKLIST",
 			filter = "PLAYER|HARMFUL",
@@ -43,7 +47,19 @@ ns.config.classConfig = {
 					77535,	-- blood sheild
 				}
 			},
-		}
+		},
+		["Unholy"] = {
+			auras = {
+				player = {
+					49016, 		--unholy frenzy
+					81340,		--sudden doom
+				},
+				pet = {
+					91342,		-- shaodw infusion
+					63560,		-- dark transformation
+				}
+			},
+		},
 	},
 
 	DRUID = {

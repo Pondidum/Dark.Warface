@@ -95,15 +95,15 @@ local preProcessAlerts = function()
 
 	end
 
-	for className, classSpecs in pairs(config.classConfig) do
-		for specName, specConfig in pairs(classSpecs) do
+	-- for className, classSpecs in pairs(config.classConfig) do
+	-- 	for specName, specConfig in pairs(classSpecs) do
 
-			for displayName, displayConfig in pairs(specConfig.alerts) do
+	-- 		-- for displayName, displayConfig in pairs(specConfig.alerts) do
 
-			end
+	-- 		-- end
 
-		end
-	end
+	-- 	end
+	-- end
 end
 
 local postProcessAlerts = function()

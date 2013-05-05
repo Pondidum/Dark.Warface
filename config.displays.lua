@@ -62,5 +62,11 @@ ns.config.auraDisplays = {
 			{"BOTTOMRIGHT", "oUF_DarkUnitFramesFocus", "TOPRIGHT", 0, 50}
 		}
 	},
+	pet = {
+		anchors = {
+			{"BOTTOMLEFT", "oUF_DarkUnitFramesPet", "TOPLEFT", 0, 50},
+			{"BOTTOMRIGHT", "oUF_DarkUnitFramesPet", "TOPRIGHT", 0, 50}
+		}
+	}
 	
 }
