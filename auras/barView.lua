@@ -28,8 +28,8 @@ local barView = {
 
 
 		local text = ui.createFont(bar)
-		text:SetPoint("TOPLEFT")
-		text:SetPoint("BOTTOMLEFT")
+		text:SetPoint("TOPLEFT", 5, 0)
+		text:SetPoint("BOTTOMLEFT", 5, 0)
 		text:SetPoint("RIGHT", bar, "CENTER", 0, 0)
 
 		container.setName = function(value) 
