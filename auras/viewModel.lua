@@ -33,6 +33,8 @@ local viewModel = {
 
 		local onUnitAura = function()
 
+			containers.resetDisplays()
+			
 			for unit, container in pairs(containers.getUnitViews()) do
 				
 				local auraConfig = specConfig.auras[unit]
