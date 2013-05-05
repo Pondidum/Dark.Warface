@@ -37,7 +37,12 @@ ns.config.classConfig = {
 				cooldowns = {
 					{ type = "spell", args = 48707 }
 				}
-			}
+			},
+			auras = {
+				player = {
+					77535,	-- blood sheild
+				}
+			},
 		}
 	},
 
