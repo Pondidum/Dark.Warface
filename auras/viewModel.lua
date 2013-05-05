@@ -53,6 +53,7 @@ local viewModel = {
 							view.setColor(unpack(classColor))
 							view.setName(auraName)
 							view.setIcon(auraTexture)
+							view.setStacks(auraCount)
 							view.setCooldown(auraExpires - auraDuration, auraDuration)
 
 							view:Show()

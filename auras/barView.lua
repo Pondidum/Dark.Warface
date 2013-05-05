@@ -21,23 +21,36 @@ local barView = {
 		icon:SetTexCoord(.08, .92, .08, .92)
 		icon:SetWidth(20)
 
+		local stacks = ui.createFont(container, nil, 16, "OUTLINE")
+		stacks:SetAllPoints(icon)
+		stacks:SetJustifyH("CENTER")
+
 		local bar = ui.createCooldownBar("TestBar", container)
 		bar:SetStatusBarTexture(core.textures.normal)
 		bar:SetPoint("BOTTOMLEFT", icon, "BOTTOMRIGHT", 0, 0)
 		bar:SetPoint("TOPRIGHT", container, "TOPRIGHT", 0, 0)
 
-
-		local text = ui.createFont(bar)
-		text:SetPoint("TOPLEFT", 5, 0)
-		text:SetPoint("BOTTOMLEFT", 5, 0)
-		text:SetPoint("RIGHT", bar, "CENTER", 0, 0)
+		local name = ui.createFont(bar)
+		name:SetPoint("TOPLEFT", 5, 0)
+		name:SetPoint("BOTTOMLEFT", 5, 0)
+		name:SetPoint("RIGHT", bar, "CENTER", 0, 0)
 
 		container.setName = function(value) 
-			text:SetText(value)
+			name:SetText(value)
 		end
 
 		container.setIcon = function(value) 
 			icon:SetTexture(value)
+		end
+
+		container.setStacks = function(value)
+
+			if value == 0 then 
+				stacks:SetText('')
+			else
+				stacks:SetText(value)
+			end
+				
 		end
 
 		container.setColor = function(r, g, b)
