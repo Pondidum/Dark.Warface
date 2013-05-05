@@ -18,13 +18,16 @@ local viewModel = {
 
 		local containers = ns.auras.viewController.new()
 		local specConfig
+		local classColor = {}
 
 		local onSpecChanged = function()
 
 			local _, playerClass = UnitClass("player")
 			local playerSpecID, playerSpec = GetSpecializationInfo(GetSpecialization())
+			local raidColor = RAID_CLASS_COLORS[playerClass]
 
 			specConfig = config.classConfig[playerClass][playerSpec]
+			classColor = {raidColor.r, raidColor.g, raidColor.b}
 
 		end
 
@@ -46,6 +49,8 @@ local viewModel = {
 						if auraDuration < 60 and caster == "player" and check(auraConfig, spellID) then
 							
 							local view = container.getView(spellID)
+
+							view.setColor(unpack(classColor))
 							view.setName(auraName)
 							view.setIcon(auraTexture)
 							view.setCooldown(auraExpires - auraDuration, auraDuration)
