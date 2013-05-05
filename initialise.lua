@@ -77,7 +77,7 @@ local preProcessAuras = function()
 		for specName, specConfig in pairs(classSpecs) do
 			
 			if specConfig.auras then
-				convertToHash(specConfig.auras)
+				hashAuras(specConfig.auras)
 			end
 
 		end
