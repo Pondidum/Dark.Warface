@@ -23,12 +23,14 @@ ns.config.specBase = {
 		target = {
 			mode = "BLACKLIST",
 			filter = "PLAYER|HARMFUL",
-			115798,	--weakened blows
+			115798,						-- weakened blows
+			81326, 						-- physical vulnerability
 		},
 		focus = {
 			mode = "BLACKLIST",
 			filter = "PLAYER|HARMFUL",
-			115798,	--weakened blows
+			115798,						-- weakened blows
+			81326, 						-- physical vulnerability
 		},
 	},
 }
@@ -52,19 +54,23 @@ ns.config.classConfig = {
 			alerts = {
 				rotation = {
 					--{ type = "spell", args = 43265 } 	--dnd
-					--{ type = "spell", 	args = 91342,		 controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}}, --shadow infusion
+					{ type = "spell", 	args = 91342,		 controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}}, --shadow infusion
+					{ type = "spell", 	args = 114851,		 controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}}, --blood tap
 				},
 				cooldowns = {
-					{ type = "spell",	args = 49206 },			-- summon gargoyle
 					{ type = "spell",	args = 49016 },			-- unholy frenzy
 					{ type = "spell",	args = 20572 },			-- blood fury (attack power)
 					{ type = "item",	args = {10, 96229} },	-- gloves, synapse springs (strength)
+					{ type = "spell",	args = 49206 },			-- summon gargoyle
 				}
 			},
 			auras = {
 				player = {
-					49016, 		--unholy frenzy
-					81340,		--sudden doom
+					81340,		-- sudden doom
+					126657,		-- Darkmist Vortex trinket
+					138958,		-- spark of Zandalar
+					138960,		-- zandalari warrior
+
 				},
 				pet = {
 					--91342,		-- shadow infusion

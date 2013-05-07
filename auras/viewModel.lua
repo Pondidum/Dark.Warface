@@ -60,7 +60,7 @@ local viewModel = {
 
 				if auraName and auraDuration and auraDuration ~= 0 and auraExpires and auraExpires ~= 0  then
 
-					if auraDuration < 60 and caster == "player" and check(auraConfig, spellID) then
+					if caster == "player" and check(auraConfig, spellID) then
 						
 						local view = container.getView(spellID)
 

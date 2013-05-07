@@ -9,7 +9,7 @@ local controllerFactory = {
 
 		local this = {}
 
-		this.bind = function(model, view, config)
+		this.bind = function(model, view, config, extra)
 
 			model:addListener("texture", function(m) view.setIcon(m.texture) end)
 			
@@ -18,7 +18,7 @@ local controllerFactory = {
 				local c = controllers[string.lower(name)]	
 
 				if c then
-					c(model, view)
+					c(model, view, extra)
 				end
 
 			end

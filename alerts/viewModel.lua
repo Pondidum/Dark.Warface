@@ -33,7 +33,7 @@ local viewModel = {
 
 					local controllers = alertData.controllers or containerConfig.controllers 
 
-					controllerFactory.bind(model, view, controllers)
+					controllerFactory.bind(model, view, controllers, alertData.extra)
 					
 					model:forceUpdate()
 					

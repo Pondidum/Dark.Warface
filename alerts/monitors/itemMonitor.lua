@@ -2,11 +2,13 @@ local addon, ns = ...
 
 local itemMonitor = {
 	
-	new = function(itemslot, auraID)
+	new = function(args)
+
+		local itemslot, auraID = unpack(args)
 
 		local this = ns.monitor:new()
 		local name, rank, auraTexture = GetSpellInfo(auraID)
-			
+
 		this.name = name
 		this.texture  = auraTexture
 
