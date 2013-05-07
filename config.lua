@@ -49,13 +49,25 @@ ns.config.classConfig = {
 			},
 		},
 		["Unholy"] = {
+			alerts = {
+				rotation = {
+					--{ type = "spell", args = 43265 } 	--dnd
+					--{ type = "spell", 	args = 91342,		 controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}}, --shadow infusion
+				},
+				cooldowns = {
+					{ type = "spell",	args = 49206 },			-- summon gargoyle
+					{ type = "spell",	args = 49016 },			-- unholy frenzy
+					{ type = "spell",	args = 20572 },			-- blood fury (attack power)
+					{ type = "item",	args = {10, 96229} },	-- gloves, synapse springs (strength)
+				}
+			},
 			auras = {
 				player = {
 					49016, 		--unholy frenzy
 					81340,		--sudden doom
 				},
 				pet = {
-					91342,		-- shaodw infusion
+					--91342,		-- shadow infusion
 					63560,		-- dark transformation
 				}
 			},
@@ -108,7 +120,7 @@ ns.config.classConfig = {
 					{ type = "spell", 	args = 2894 },			--fire elemental
 					{ type = "spell", 	args = 51533 },			--feral spirit
 					{ type = "spell", 	args = 114049 },		--ascendance
-					{ type = "item",	args = {10, 96228} },	--gloves, synapse springs
+					{ type = "item",	args = {10, 96228} },	--gloves, synapse springs (agility)
 					{ type = "spell", 	args = 16166 },			--elemental mastery
 				},
 				rotation = {
