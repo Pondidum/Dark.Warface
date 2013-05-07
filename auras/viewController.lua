@@ -23,24 +23,30 @@ local viewController = {
 
 		end
 
-		this.resetDisplays = function()
+		this.getView = function(unit)
+			return views[unit]
+		end
+
+		this.resetView = function(unit)
+
+			local view = views[unit]
+
+			if view then
+				view.resetViews()
+				view.children = {}
+				view.performLayout()
+			end
+
+		end
+
+		this.resetAllViews = function()
 	
 			for unit, container in pairs(views) do
-
-				container.resetViews()
-
-				container.children = {}
-				container.performLayout()
+				this.resetView(unit)
 			end
 			
 		end
-
-		this.getUnitViews = function()
-
-			return views
-			
-		end
-
+		
 		return this
 
 	end

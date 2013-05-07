@@ -31,55 +31,72 @@ local viewModel = {
 
 		end
 
-		local onUnitAura = function()
+		local onUnitAura = function(self, event, unit)
 
-			containers.resetDisplays()
+			if unit == nil then
+				return 
+			end
+
+			local container = containers.getView(unit)
 			
-			for unit, container in pairs(containers.getUnitViews()) do
-				
-				local auraConfig = specConfig.auras[unit]
+			if container == nil then
+				return
+			end
 
-				local check = auraConfig.mode == "WHITELIST" and checkWhiteList or checkBlackList
-				local children = {}
+			containers.resetView(unit)
+			
+			local auraConfig = specConfig.auras[unit]
 
-				for i = 1, 20 do
+			if auraConfig == nil then
+				return
+			end
 
-					local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster, isStealable, shouldConsolidate, spellID = UnitAura(unit, i, auraConfig.filter)
+			local check = auraConfig.mode == "WHITELIST" and checkWhiteList or checkBlackList
+			local children = {}
 
-					if auraName and auraDuration and auraDuration ~= 0 and auraExpires and auraExpires ~= 0  then
+			for i = 1, 20 do
 
-						if auraDuration < 60 and caster == "player" and check(auraConfig, spellID) then
-							
-							local view = container.getView(spellID)
+				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster, isStealable, shouldConsolidate, spellID = UnitAura(unit, i, auraConfig.filter)
 
-							view.setColor(unpack(classColor))
-							view.setName(auraName)
-							view.setIcon(auraTexture)
-							view.setStacks(auraCount)
-							view.setCooldown(auraExpires - auraDuration, auraDuration)
+				if auraName and auraDuration and auraDuration ~= 0 and auraExpires and auraExpires ~= 0  then
 
-							view:Show()
+					if auraDuration < 60 and caster == "player" and check(auraConfig, spellID) then
+						
+						local view = container.getView(spellID)
 
-							table.insert(children, view)
-						end
+						view.setColor(unpack(classColor))
+						view.setName(auraName)
+						view.setIcon(auraTexture)
+						view.setStacks(auraCount)
+						view.setCooldown(auraExpires - auraDuration, auraDuration)
 
+						view:Show()
+
+						table.insert(children, view)
 					end
 
 				end
-				
-				table.sort(children, function(a, b) return a.remaining > b.remaining end)
-
-				container.children = children
-				container.performLayout()
 
 			end
+			
+			table.sort(children, function(a, b) return a.remaining > b.remaining end)
+
+			container.children = children
+			container.performLayout()
 
 		end
 
 		local onTargetChanged = function()
 
-			containers.resetDisplays()
-			onUnitAura()
+			containers.resetAllViews()
+			onUnitAura(nil, nil, "target")
+
+		end
+
+		local onFocusChanged = function()
+
+			containers.resetAllViews()
+			onUnitAura(nil, nil, "focus")
 
 		end
 
@@ -87,7 +104,7 @@ local viewModel = {
 		
 			events.register("UNIT_AURA", nil, onUnitAura)
 			events.register("PLAYER_TARGET_CHANGED", nil, onTargetChanged)
-			events.register("PLAYER_FOCUS_CHANGED", nil, onTargetChanged)
+			events.register("PLAYER_FOCUS_CHANGED", nil, onFocusChanged)
 
 		end
 
@@ -96,7 +113,7 @@ local viewModel = {
 
 		this.run = function()
 
-			containers.createDisplays(config.auraDisplays)
+			containers.createViews(config.auraDisplays)
 			onSpecChanged()
 			
 			registerEvents()
