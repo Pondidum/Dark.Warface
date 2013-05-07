@@ -7,7 +7,7 @@ local viewController = {
 		local this = {}
 		local views = {}
 
-		this.createDisplays = function(displays)
+		this.createViews = function(displays)
 
 			for unit, displayConfig in pairs(displays) do
 				
@@ -46,7 +46,7 @@ local viewController = {
 			end
 			
 		end
-		
+
 		return this
 
 	end
