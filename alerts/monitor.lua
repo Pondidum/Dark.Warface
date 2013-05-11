@@ -32,10 +32,6 @@ local monitor = {
 
 	updated = function(self, lastState)
 
-		if self.mode == "NONE" then
-			return
-		end
-
 		for key, state in pairs(lastState) do
 
 			if state ~= self[key] then
