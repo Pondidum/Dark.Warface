@@ -33,10 +33,6 @@ local viewModel = {
 
 		local onUnitAura = function(self, event, unit)
 
-			if unit == nil then
-				return 
-			end
-
 			local container = containers.getView(unit)
 			
 			if container == nil then
