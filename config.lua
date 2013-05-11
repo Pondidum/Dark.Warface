@@ -53,9 +53,9 @@ ns.config.classConfig = {
 		["Unholy"] = {
 			alerts = {
 				rotation = {
-					--{ type = "spell", args = 43265 } 	--dnd
-					{ type = "spell", 	args = 91342,		 controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}}, --shadow infusion
+					{ type = "spell", 	args = 130736 }, 	-- soul reaper (unholy)
 					{ type = "spell", 	args = 114851,		 controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}}, --blood tap
+					{ type = "spell", 	args = 91342,		 controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}}, --shadow infusion
 				},
 				cooldowns = {
 					{ type = "spell",	args = 49016 },			-- unholy frenzy
@@ -68,8 +68,9 @@ ns.config.classConfig = {
 				player = {
 					81340,		-- sudden doom
 					126657,		-- Darkmist Vortex trinket
-					138958,		-- spark of Zandalar
-					138960,		-- zandalari warrior
+					138702,		-- Shadow pan assult
+					126582,		-- unwavering might (Lei Shen's Final Orders)
+					138870,		-- Primordius' Talisman of Rage
 
 				},
 				pet = {
