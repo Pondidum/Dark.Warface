@@ -1,5 +1,5 @@
 local addon, ns = ...
-local eventStore = Dark.core.events
+local eventStore = Dark.core.events.new()
 
 local monitor = {
 
@@ -56,7 +56,7 @@ local monitor = {
 	end,
 
 	onEvent = function(self, event, action)
-		eventStore.register(event, nil, action)
+		eventStore.register(event, action)
 	end,
 
 	reset = function(self) 

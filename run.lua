@@ -1,7 +1,7 @@
 local addon, ns = ...
 
 local core = Dark.core
-local events = core.events
+local events = core.events.new()
 
 local auras = ns.auras.viewModel.new()
 local alerts = ns.alerts.viewModel.new()
@@ -13,5 +13,5 @@ local onPlayerLogin = function()
 
 end
 
-events.register("PLAYER_LOGIN", nil, onPlayerLogin)
+events.register("PLAYER_LOGIN", onPlayerLogin)
 Dark.warface = ns

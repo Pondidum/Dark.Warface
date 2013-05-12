@@ -1,6 +1,6 @@
 local addon, ns = ...
 local alerts = ns.alerts
-local events = Dark.core.events
+local events = Dark.core.events.new()
 
 local UnitHealthMax, UnitHealth,UnitIsDeadOrGhost, UnitExists = UnitHealthMax, UnitHealth,UnitIsDeadOrGhost, UnitExists
 
@@ -39,7 +39,7 @@ alerts.controllerFactory.register("healthGlow", function(monitor, display, extra
 		
 	end
 
-	events.register("UNIT_HEALTH", nil, onHealthChange)
-	events.register("PLAYER_TARGET_CHANGED", nil, onHealthChange)
+	events.register("UNIT_HEALTH", onHealthChange)
+	events.register("PLAYER_TARGET_CHANGED", onHealthChange)
 
 end)

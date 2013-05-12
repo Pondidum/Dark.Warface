@@ -2,7 +2,7 @@ local addon, ns = ...
 local config = ns.config
 
 local core = Dark.core
-local events = core.events
+local events = core.events.new()
 
 local checkWhiteList = function(config, spellID)
 	return config[spellID]
@@ -98,9 +98,9 @@ local viewModel = {
 
 		local registerEvents = function()
 		
-			events.register("UNIT_AURA", nil, onUnitAura)
-			events.register("PLAYER_TARGET_CHANGED", nil, onTargetChanged)
-			events.register("PLAYER_FOCUS_CHANGED", nil, onFocusChanged)
+			events.register("UNIT_AURA", onUnitAura)
+			events.register("PLAYER_TARGET_CHANGED", onTargetChanged)
+			events.register("PLAYER_FOCUS_CHANGED", onFocusChanged)
 
 		end
 
