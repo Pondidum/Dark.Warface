@@ -53,9 +53,9 @@ ns.config.classConfig = {
 		["Unholy"] = {
 			alerts = {
 				rotation = {
-					{ type = "spell", 	args = 130736 }, 	-- soul reaper (unholy)
-					{ type = "spell", 	args = 114851,		 controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}}, --blood tap
-					{ type = "spell", 	args = 91342,		 controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}}, --shadow infusion
+					{ type = "spell", 	args = 130736, 	controllers = { "healthGlow", "cdAndActiveText" }, 	extra = { unit="target", percent=25}}, 	-- soul reaper (unholy)
+					{ type = "spell", 	args = 114851,	controllers = { "stacksGlow", "stacksText" }, 		extra = {stacks = 5}}, --blood tap
+					{ type = "spell", 	args = 91342,	controllers = { "stacksGlow", "stacksText" }, 		extra = {stacks = 5}}, --shadow infusion
 				},
 				cooldowns = {
 					{ type = "spell",	args = 49016 },			-- unholy frenzy
