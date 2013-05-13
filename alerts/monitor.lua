@@ -1,5 +1,5 @@
 local addon, ns = ...
-local eventStore = Dark.core.events.new()
+local events = Dark.core.events
 
 local monitor = {
 
@@ -14,6 +14,7 @@ local monitor = {
 			mode = "NONE",		--NONE, ACTIVE, INACTIVE
 			texture = nil,
 			listeners = {},
+			events = events.new()
 		}
 
 		return setmetatable(this, { __index = self } )
@@ -56,7 +57,7 @@ local monitor = {
 	end,
 
 	onEvent = function(self, event, action)
-		eventStore.register(event, action)
+		self.events.register(event, action)
 	end,
 
 	reset = function(self) 
