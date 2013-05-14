@@ -55,6 +55,7 @@ ns.config.classConfig = {
 				rotation = {
 					{ type = "spell", 	args = 130736, 	controllers = { "healthGlow", "cdAndActiveText" }, 	extra = { unit="target", percent=35}}, 	-- soul reaper (unholy)
 					{ type = "spell", 	args = 114851,	controllers = { "stacksGlow", "stacksText" }, 		extra = {stacks = 5}}, --blood tap
+					{ type = "spell", 	args = 81340, }, 		-- sudden doom
 					{ type = "spell", 	args = 91342,	controllers = { "stacksGlow", "stacksText" }, 		extra = {stacks = 5}}, --shadow infusion
 				},
 				cooldowns = {
@@ -66,11 +67,13 @@ ns.config.classConfig = {
 			},
 			auras = {
 				player = {
-					81340,		-- sudden doom
+					53365,		-- unholy strength (rune of the fallen crusader)
+					--81340,		-- sudden doom
 					126657,		-- Darkmist Vortex trinket
 					138702,		-- Shadow pan assult
 					126582,		-- unwavering might (Lei Shen's Final Orders)
 					138870,		-- Primordius' Talisman of Rage
+					105706,		-- Potion of Mogu Power
 
 				},
 				pet = {
@@ -140,6 +143,10 @@ ns.config.classConfig = {
 			},
 			auras = {
 				player = {
+					73683,		-- unleash flame
+					138756,		-- blades of rentaki
+					120032,		-- dancing steel
+
 				},
 				target = {
 					17364		-- stormstrike
