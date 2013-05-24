@@ -74,6 +74,7 @@ ns.config.classConfig = {
 					126582,		-- unwavering might (Lei Shen's Final Orders)
 					138870,		-- Primordius' Talisman of Rage
 					105706,		-- Potion of Mogu Power
+					138759,		-- feather
 
 				},
 				pet = {
@@ -90,7 +91,17 @@ ns.config.classConfig = {
 				rotation = {
 					{ type = "spell",	args = 78674 },
 				}
-			}
+			},
+			auras = {
+				player = {
+					26297,		-- berserking
+					112071, 	-- celestial alignment
+					102560,		-- incarnation: chosen of elune
+					16886,		-- nature's grace
+					48505,		-- starfall
+					105702,		-- potion of the jade serpent
+				},
+			},
 		}
 	},
 
