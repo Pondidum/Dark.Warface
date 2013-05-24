@@ -14,7 +14,6 @@ local alertView = {
 		local cooldown = _G[name.."Cooldown"]
 		local text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
 
-		core.style.addShadow(button)
 		core.style.actionButton(button)
 
 		button:RegisterForClicks(nil);
