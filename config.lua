@@ -75,6 +75,7 @@ ns.config.classConfig = {
 					138870,		-- Primordius' Talisman of Rage
 					105706,		-- Potion of Mogu Power
 					138759,		-- feather
+					48792,		-- ibf
 
 				},
 				pet = {
@@ -109,8 +110,8 @@ ns.config.classConfig = {
 		["Protection"] = {
 			alerts = {
 				cooldowns = {
-					{ type = "spell", args = 1111 },		-- argent defender
-					{ type = "spell", args = 2222 },		-- wings
+					--{ type = "spell", args = 1111 },		-- argent defender
+					--{ type = "spell", args = 2222 },		-- wings
 				},
 				rotation = {
 					{ type = "spell", args = 20271 },		-- judgement
@@ -129,6 +130,19 @@ ns.config.classConfig = {
 					31884,		-- avenging wrath
 				}
 			}
+		},
+	},
+
+	PRIEST = {
+
+		["Shadow"] = {
+			alerts = {
+				rotation = {
+					{ type = "spell", args = 120644 },		-- halo
+					{ type = "spell", args = 8092 },		-- mind blast
+					{ type = "spell", args = 34433 },		-- shadowfiend
+				},
+			},
 		},
 	},
 
