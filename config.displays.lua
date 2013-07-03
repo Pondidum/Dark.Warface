@@ -19,22 +19,22 @@ ns.config.alertDisplays  = {
 		childView = "icon",
 
 		anchors = {
-			{"CENTER", "DarkuiFrame", "CENTER", 0, -100},
+			{"CENTER", "DarkuiFrame", "CENTER", 0, -115},
 		},
 
 	},
 
 	rotation = {
 		autosize = true, 
-		marginLeft = 5, 
-		marginRight = 5,
+		marginLeft = 4, 
+		marginRight = 4,
 		defaultChildWidth = 32,
 		defaultChildHeight = 32,
 		forceChildSize = true,
 		childView = "icon",
 
 		anchors = {
-			{"CENTER", "DarkuiFrame", "CENTER", 0, -60},
+			{"CENTER", "DarkuiFrame", "CENTER", 0, -150},
 		},
 
 	},
