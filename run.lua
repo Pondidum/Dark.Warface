@@ -13,5 +13,14 @@ local onPlayerLogin = function()
 
 end
 
+local onSpecChanged = function()
+	
+	auras.specChanged()
+	alerts.specChanged()
+
+end
+
 events.register("PLAYER_LOGIN", onPlayerLogin)
+events.register("ACTIVE_TALENT_GROUP_CHANGED", onSpecChanged)
+
 Dark.warface = ns
