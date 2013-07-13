@@ -10,16 +10,21 @@ local monitorFactory = {
 		local this = {}
 		local inUse = {}
 
-		this.get = function(type)
+		this.getNew = function(type, args)
 
-			return monitors[type]
+			local monitorType = monitors[type]
+			local instance = monitorType.new(args)
+
+			table.insert(inUse, instance)
+
+			return instance
 			
 		end
 
 		this.recycleAll = function()
 
 			for i, monitor in pairs(inUse) do
-				monitor.clearListeners()
+				monitor:clearListeners()
 			end
 
 			inUse = {}

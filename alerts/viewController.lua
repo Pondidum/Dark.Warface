@@ -23,8 +23,16 @@ local viewController = {
 
 		end
 
-		this.getUnitViews = function()
-			return views
+		this.getView = function(name)
+			return views[name]
+		end
+
+		this.foreach = function(action)
+
+			for name, view in pairs(views) do
+				action(view)
+			end
+			
 		end
 		
 		return this
