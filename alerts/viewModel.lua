@@ -20,23 +20,23 @@ local viewModel = {
 		local buildDisplays = function()
 
 			local alertConfig = specConfig.alerts
-			local containers = containers.getUnitViews()
 
 			for containerName, containerConfig in pairs(alertConfig) do
 				
-				local container = containers[containerName]
+				local container = containers.getView(containerName)
 
 				for i, alertData in ipairs(containerConfig) do
 					
-					local model = monitors.get(alertData.type).new(alertData.args)
+					local model = monitors.getNew(alertData.type, alertData.args)
 					local view = alertViews.get()
+					view:Show()
 
 					local controllers = alertData.controllers or containerConfig.controllers 
 
 					controllerFactory.bind(model, view, controllers, alertData.extra)
 					
 					model:forceUpdate()
-					
+						
 					container.add(view)
 
 				end
@@ -51,6 +51,17 @@ local viewModel = {
 			local playerSpecID, playerSpec = GetSpecializationInfo(GetSpecialization())
 
 			specConfig = config.classConfig[playerClass][playerSpec]
+
+
+			containers.foreach(function(v) 
+
+				for k,v in pairs(v.children) do
+					v:Hide()
+				end
+
+				v.clear() 
+			end)
+
 
 			alertViews.recycleAll()
 			monitors.recycleAll()
