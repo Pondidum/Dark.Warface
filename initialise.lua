@@ -95,15 +95,6 @@ local preProcessAlerts = function()
 
 	end
 
-	-- for className, classSpecs in pairs(config.classConfig) do
-	-- 	for specName, specConfig in pairs(classSpecs) do
-
-	-- 		-- for displayName, displayConfig in pairs(specConfig.alerts) do
-
-	-- 		-- end
-
-	-- 	end
-	-- end
 end
 
 local postProcessAlerts = function()
@@ -139,7 +130,6 @@ local processConfig = function()
 
 	combineSpecTablesWithBase()	
 
-	--postProcessAuras
 	postProcessAlerts()
 
 end
@@ -152,7 +142,6 @@ local init = function()
 	ns.monitors = {}
 	ns.auras = {}
 	ns.alerts = {}
-
 
 end
 

@@ -22,7 +22,7 @@ local monitor = {
 	end,
 
 	clearListeners = function(self)
-		listeners = {}
+		self.listeners = {}
 	end,
 
 	addListener = function(self, key, action)

@@ -19,7 +19,7 @@ local monitorFactory = {
 		this.recycleAll = function()
 
 			for i, monitor in pairs(inUse) do
-				inUse.clearListeners()
+				monitor.clearListeners()
 			end
 
 			inUse = {}

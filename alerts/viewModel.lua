@@ -70,6 +70,10 @@ local viewModel = {
 
 		end
 
+		this.specChanged = function()
+			onSpecChanged()
+		end
+
 		return this
 	end
 
