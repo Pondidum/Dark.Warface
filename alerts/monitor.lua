@@ -26,9 +26,7 @@ local monitor = {
 	end,
 
 	addListener = function(self, key, action)
-
 		self.listeners[key] = action
-
 	end,
 
 	updated = function(self, lastState)
