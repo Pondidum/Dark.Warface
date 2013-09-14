@@ -41,7 +41,17 @@ ns.config.classConfig = {
 		["Blood"] = {
 			alerts = {
 				cooldowns = {
-					{ type = "spell", args = 48707 }
+					{ type = "spell", args = 48743 },  --pact
+					{ type = "spell", args = 48982 },  --blood tap
+					{ type = "spell", args = 55233 },  --vamp
+					{ type = "spell", args = 48792 },  --ibf
+					{ type = "spell", args = 48707 },  --ams
+					{ type = "spell", args = 49222, controllers = { "stacksText", "activeGlow" }},  --bone shield
+				},
+				rotation = {
+					{ type = "spell", args = 49028 }, 	-- drw
+					{ type = "spell", args = 114866 },	-- soul reaper
+					{ type = "spell", args = 43265 },	-- death and decay
 				}
 			},
 			auras = {
@@ -132,7 +142,63 @@ ns.config.classConfig = {
 					105702,		-- potion of the jade serpent
 				},
 			},
+		},
+
+		["Feral"] = {
+			alerts = {
+				rotation = {
+					--{ type = "spell",	args = 127538 },	-- savage roar
+					{ type = "spell",	args = 5221 },		-- shred
+					{ type = "spell",	args = 33876 },		-- mangle
+					{ type = "spell",	args = 1822 },		-- rake
+					{ type = "spell",	args = 1079 },		-- rip
+				},
+				cooldowns = {
+					{ type = "spell",	args = 135700 },	-- clearcasting
+					{ type = "spell",	args = 5217 },		-- tigers fury
+					{ type = "spell",	args = 26297 },		-- berserking (racial)
+					{ type = "spell",	args = 106951 },	-- berserk
+				},
+			},
+			auras = {
+				player = {
+					26297,		-- berserking
+					69369, 		-- predatory swiftness
+					127538,		-- savage roar
+					108381,		-- dream of cenarius
+					139120,		-- re-origination
+				},
+				target = {
+					58180		-- infected wounds
+				},
+				focus = {
+					58180		-- infected wounds
+				},
+			},
+
 		}
+	},
+
+	MAGE = {
+		["Fire"] = {
+			auras = {
+				player = {
+					116257,		-- invoker's energy
+					104509		-- windsong (crit)
+				}
+			}
+		},	
+	},
+
+	MONK = {
+		["Windwalker"] = {
+			auras = {
+				player = {
+					125359,		--tiger palm
+				},
+			},
+
+		},
 	},
 
 	PALADIN = {
@@ -216,5 +282,31 @@ ns.config.classConfig = {
 			},
 		}
 	},
+
+	WARRIOR = {
+		["Arms"] = {
+			alerts = {
+				cooldowns = {
+					{ type = "spell", 	args = 18499 },			-- berserker rage
+					{ type = "spell", 	args = 114207 },		-- Skull Banner
+					{ type = "spell", 	args = 107574 },		-- avatar
+					{ type = "spell", 	args = 1719 },			-- recklessness
+				},
+				rotation = {
+					--{ type = "spell", 	args = 18499 },			-- berserker rage
+					{ type = "spell", 	args = 7384 },			-- overpower
+					{ type = "spell", 	args = 12294 },			-- mortal strike
+					{ type = "spell", 	args = 86346 },			-- colossus smash
+					--{ type = "spell", 	args = 1719 },			-- recklessness	
+				},
+			},
+			auras = {
+				player = {
+					12880,		-- enrage
+				},
+			},
+		}
+
+	}
 
 }
