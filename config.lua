@@ -253,7 +253,6 @@ ns.config.classConfig = {
 		["Enhancement"] = {
 			alerts = {
 				cooldowns = {
-					--{ type = "spell", 	args = 2062 },			--earth elemental
 					{ type = "spell", 	args = 120668 },		--stormlash
 					{ type = "spell", 	args = 2894 },			--fire elemental
 					{ type = "spell", 	args = 51533 },			--feral spirit
@@ -274,13 +273,30 @@ ns.config.classConfig = {
 					73683,		-- unleash flame
 					138756,		-- blades of rentaki
 					120032,		-- dancing steel
-
+					146308,		-- assurance of consequence
 				},
 				target = {
+					17364		-- stormstrike
+				},
+				focus = {
 					17364		-- stormstrike
 				}
 			},
 		}
+	},
+
+	WARLOCK = {
+		["Destruction"] = {
+			auras = {
+				player = {
+					117828,		-- backdraft
+					104232,		-- rain of fire
+				},
+			},
+		},
+		["Affliction"] = {
+
+		},
 	},
 
 	WARRIOR = {
