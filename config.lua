@@ -295,7 +295,20 @@ ns.config.classConfig = {
 			},
 		},
 		["Affliction"] = {
-
+			auras = {
+				player = {
+					113860,		-- darksoul: misery
+					6229,		-- twilight ward
+				},	
+				target = {
+					103103,		-- malefic grasp
+					1120,		-- drain soul
+				},
+				focus = {
+					103103,		-- malefic grasp
+					1120,		-- drain soul
+				},
+			},
 		},
 	},
 
