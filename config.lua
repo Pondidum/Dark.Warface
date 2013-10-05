@@ -109,19 +109,15 @@ ns.config.classConfig = {
 					{ type = "item",	args = {10, 96229} },	-- gloves, synapse springs (strength)
 				},
 			},
-			auras = {
+			auras = { 
 				player = {
-					53365,		-- unholy strength (rune of the fallen crusader)
-					51271,		-- pillar of frost
-					126657,		-- Darkmist Vortex trinket
-					138702,		-- Shadow pan assult
-					126582,		-- unwavering might (Lei Shen's Final Orders)
-					138870,		-- Primordius' Talisman of Rage
 					105706,		-- Potion of Mogu Power
-					138759,		-- feather
 					48792,		-- ibf
-				}
-			},
+				},
+				target = {
+					51714,		-- frost vulnerability
+				},
+			}
 		},
 	},
 
@@ -194,7 +190,13 @@ ns.config.classConfig = {
 		["Windwalker"] = {
 			auras = {
 				player = {
-					125359,		--tiger palm
+					125359,		-- tiger palm
+					116740,		-- tiger eye brew
+					115288,		-- energising brew
+				},
+				target = {
+					115804,		-- mortal wounds
+					128531,		-- blackout kick
 				},
 			},
 
@@ -249,6 +251,20 @@ ns.config.classConfig = {
 		},
 	},
 
+	ROGUE = {
+		["Subtlety"] = {
+			auras = {
+				player = {
+					5171		-- slice n dice
+				},
+				target = {
+					2818,		-- deadly poison
+					112961,		-- leeching poison
+				},
+			},
+		},
+	},
+
 	SHAMAN = {
 		["Enhancement"] = {
 			alerts = {
@@ -274,6 +290,7 @@ ns.config.classConfig = {
 					138756,		-- blades of rentaki
 					120032,		-- dancing steel
 					146308,		-- assurance of consequence
+					114893,		-- stone bulwark
 				},
 				target = {
 					17364		-- stormstrike
