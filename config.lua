@@ -260,6 +260,7 @@ ns.config.classConfig = {
 				target = {
 					2818,		-- deadly poison
 					112961,		-- leeching poison
+					93068,		-- master poisoner
 				},
 			},
 		},
