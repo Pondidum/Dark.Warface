@@ -294,6 +294,7 @@ ns.config.classConfig = {
 					114893,		-- stone bulwark
 					30823,		-- shamanistic rage
 					108281,		-- ancestral guidance
+					108271,		-- astral shift
 				},
 				target = {
 					17364		-- stormstrike
