@@ -172,7 +172,19 @@ ns.config.classConfig = {
 				},
 			},
 
-		}
+		},
+
+		["Guardian"] = {
+			auras = {
+				player = {
+					132402,		-- savage defence,
+					106922,		-- might of ursoc,
+					61336,		-- survival instincts
+					22812,		-- barkskin
+					137593,		-- meta gem
+				},
+			},
+		},
 	},
 
 	MAGE = {
