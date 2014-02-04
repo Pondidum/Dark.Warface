@@ -30,20 +30,10 @@ local monitor = {
 		self.listeners[key] = action
 	end,
 
-	updated = function(self, lastState)
+	updated = function(self)
 
-		for key, state in pairs(lastState) do
-
-			if state ~= self[key] then
-
-				for key, action in pairs(self.listeners) do
-					action(self)
-				end
-
-				break
-
-			end
-
+		for key, action in pairs(self.listeners) do
+			action(self)
 		end
 
 	end,

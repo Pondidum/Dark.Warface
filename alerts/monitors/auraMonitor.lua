@@ -13,8 +13,6 @@ local auraMonitor = {
 
 		local update = function()
 
-			local lastState = {start = this.start, duration = this.duration, stacks = this.stacks, mode = this.mode}
-
 			local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura(unit, spellName, nil, "PLAYER|HARMFUL")
 
 			if auraName then
@@ -33,7 +31,7 @@ local auraMonitor = {
 				this:forceUpdate()
 			end
 
-			this:updated(lastState)
+			this:updated()
 
 		end
 

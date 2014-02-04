@@ -23,8 +23,6 @@ local spellMonitor = {
 
 		local update = function()
 
-			local lastState = {start = this.start, duration = this.duration, stacks = this.stacks, mode = this.mode}
-
 			local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura("player", spellName)
 			local power = UnitPower("player", powerType)
 
@@ -60,7 +58,7 @@ local spellMonitor = {
 
 			end
 
-			this:updated(lastState)
+			this:updated()
 
 		end
 
