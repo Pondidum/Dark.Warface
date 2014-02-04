@@ -242,6 +242,13 @@ ns.config.classConfig = {
 		},
 
 		["Retribution"] = {
+			alerts = {
+				rotation = {
+					{ type = "spell", args = 20271 },		-- judgement
+					{ type = "spell", args = 35395 },		-- crusader strike
+					{ type = "spell", args = 85256, controllers = { "powerGlow", "powerText" }, extra = {power = 3}},		-- templar's verdict
+				},
+			},
 			auras = {
 				player = {
 					84963, 		-- Inquisition
