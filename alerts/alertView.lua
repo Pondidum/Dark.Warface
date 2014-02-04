@@ -29,27 +29,27 @@ local alertView = {
 		glow.animOut:SetScript("OnFinished", function(self) glow:Hide() end)
 
 		button.showGlow = function()
-			
+
 			if glow.animOut:IsPlaying() then
-				glow.animOut:Stop()  
+				glow.animOut:Stop()
 			end
-			
-			if not glow:IsVisible() then   
-				glow.animIn:Play()    
+
+			if not glow:IsVisible() then
+				glow.animIn:Play()
 			end
-			
+
 		end
 
 		button.hideGlow = function()
-			
+
 			if glow.animIn:IsPlaying() then
-				glow.animIn:Stop()  
+				glow.animIn:Stop()
 			end
-			
-			if glow:IsVisible() then     
-				glow.animOut:Play()  
+
+			if glow:IsVisible() then
+				glow.animOut:Play()
 			end
-			
+
 		end
 
 		button.showText = function()
@@ -59,7 +59,7 @@ local alertView = {
 		button.hideText = function()
 			text:Hide()
 		end
-		
+
 		button.setText = function(value)
 			text:SetText(value)
 		end

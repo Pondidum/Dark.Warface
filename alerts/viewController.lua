@@ -1,7 +1,7 @@
 local addon, ns = ...
 
 local viewController = {
-	
+
 	new = function()
 
 		local this = {}
@@ -32,12 +32,12 @@ local viewController = {
 			for name, view in pairs(views) do
 				action(view)
 			end
-			
+
 		end
-		
+
 		return this
 
-	end	
+	end
 }
 
 ns.alerts.viewController = viewController

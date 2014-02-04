@@ -10,7 +10,7 @@ local monitor = {
 			start = 0,
 			duration = 0,
 			stacks = 0,
-			maxStacks = 0,	
+			maxStacks = 0,
 			power = 0,
 			mode = "NONE",		--NONE, ACTIVE, INACTIVE
 			texture = nil,
@@ -35,7 +35,7 @@ local monitor = {
 		for key, state in pairs(lastState) do
 
 			if state ~= self[key] then
-				
+
 				for key, action in pairs(self.listeners) do
 					action(self)
 				end
@@ -46,7 +46,7 @@ local monitor = {
 
 		end
 
-	end,	
+	end,
 
 	forceUpdate = function(self)
 
@@ -59,24 +59,24 @@ local monitor = {
 		self.events.register(event, action)
 	end,
 
-	reset = function(self) 
+	reset = function(self)
 
 		self.start = 0
 		self.duration = 0
 		self.stacks = 0
-		self.maxStacks = 0	
+		self.maxStacks = 0
 		self.mode = "NONE"
 
 	end,
 
 	report = function(self)
 
-		print(string.format("%s (%s) Start: %d, Duration: %d, Stacks: %d, Texture: %s", 
-			self.name, 
+		print(string.format("%s (%s) Start: %d, Duration: %d, Stacks: %d, Texture: %s",
+			self.name,
 			self.mode,
-			self.start, 
-			self.duration, 
-			self.stacks, 
+			self.start,
+			self.duration,
+			self.stacks,
 			self.texture
 			))
 

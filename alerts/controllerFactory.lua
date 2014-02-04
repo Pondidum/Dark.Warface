@@ -4,7 +4,7 @@ local alerts = ns.alerts
 local controllers = {}
 
 local controllerFactory = {
-	
+
 	new = function()
 
 		local this = {}
@@ -12,10 +12,10 @@ local controllerFactory = {
 		this.bind = function(model, view, config, extra)
 
 			model:addListener("texture", function(m) view.setIcon(m.texture) end)
-			
+
 			for i, name in ipairs(config) do
-				
-				local c = controllers[string.lower(name)]	
+
+				local c = controllers[string.lower(name)]
 
 				if c then
 					c(model, view, extra)

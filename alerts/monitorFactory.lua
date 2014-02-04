@@ -4,7 +4,7 @@ local alerts = ns.alerts
 local monitors = {}
 
 local monitorFactory = {
-	
+
 	new = function()
 
 		local this = {}
@@ -18,7 +18,7 @@ local monitorFactory = {
 			table.insert(inUse, instance)
 
 			return instance
-			
+
 		end
 
 		this.recycleAll = function()

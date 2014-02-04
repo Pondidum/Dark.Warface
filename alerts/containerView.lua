@@ -4,7 +4,7 @@ local core = Dark.core
 local layout = core.layout
 
 local containerView = {
-	
+
 	new = function(unitName, config)
 
 		local container = CreateFrame("Frame", "DarkWarfaceAlert" .. unitName, UIParent)
@@ -12,7 +12,7 @@ local containerView = {
 		layout.init(container, config)
 
 		return container
-		
+
 	end
 
 }
