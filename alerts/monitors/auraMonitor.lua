@@ -1,11 +1,11 @@
 local addon, ns = ...
 
 local auraMonitor = {
-	
+
 	new = function(spellID, unit)
 
 		local this = ns.monitor:new()
-		
+
 		local spellName, spellRank, spellTexture = GetSpellInfo(spellID)
 
 		this.name = spellName
@@ -18,7 +18,7 @@ local auraMonitor = {
 			local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura(unit, spellName, nil, "PLAYER|HARMFUL")
 
 			if auraName then
-				
+
 				this.mode = "ACTIVE"
 
 				local start = auraExpires - auraDuration
@@ -27,7 +27,7 @@ local auraMonitor = {
 				this.duration = auraDuration
 				this.stacks = auraCount
 				this.maxStacks = auraCount
-				
+
 			else
 				this:reset()
 				this:forceUpdate()

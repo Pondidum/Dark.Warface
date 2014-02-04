@@ -1,7 +1,7 @@
 local addon, ns = ...
 
 local itemMonitor = {
-	
+
 	new = function(args)
 
 		local itemslot, auraID = unpack(args)
@@ -16,9 +16,9 @@ local itemMonitor = {
 
 			local lastState = {start = this.start, duration = this.duration, stacks = this.stacks, mode = this.mode}
 			local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura("player", name)
-			
+
 			if auraName then
-			
+
 				this.mode = "ACTIVE"
 
 				local start = auraExpires - auraDuration
@@ -27,9 +27,9 @@ local itemMonitor = {
 				this.duration = auraDuration
 				this.stacks = auraCount
 				this.maxStacks = auraCount
-					
+
 			else
-				
+
 				this.mode = "INACTIVE"
 
 				local start, duration, enable = GetInventoryItemCooldown("player", itemslot)
@@ -39,7 +39,7 @@ local itemMonitor = {
 				this.stacks = 0
 				this.maxStacks = 0
 
-			end 
+			end
 
 			this:updated(lastState)
 

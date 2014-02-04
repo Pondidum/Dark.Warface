@@ -8,11 +8,11 @@ local powerMap = {
 }
 
 local spellMonitor = {
-	
+
 	new = function(spellID)
 
 		local this = ns.monitor:new()
-		
+
 		local localClass, class = UnitClass("player")
 		local powerType = powerMap[class]
 
@@ -31,7 +31,7 @@ local spellMonitor = {
 			this.power = power
 
 			if auraName then
-				
+
 				this.mode = "ACTIVE"
 
 				local start = auraExpires - auraDuration
@@ -40,9 +40,9 @@ local spellMonitor = {
 				this.duration = auraDuration
 				this.stacks = auraCount
 				this.maxStacks = auraCount
-					
+
 			else
-				
+
 				local start, duration, enable, charges, maxCharges = GetSpellCooldown(spellName)
 				local usable, notEnoughPower = IsUsableSpell(spellName)
 
@@ -58,7 +58,7 @@ local spellMonitor = {
 					this:reset()
 				end
 
-			end 
+			end
 
 			this:updated(lastState)
 

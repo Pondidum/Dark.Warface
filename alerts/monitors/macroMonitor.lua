@@ -1,25 +1,25 @@
 local addon, ns = ...
 
 local macroMonitor = {
-	
+
 	new = function(macroName)
 
 		local this = ns.monitor:new()
-	
+
 		this.name = macroName
 		this.texture  = GetSpellTexture(GetMacroSpell(macroName))
 
 		local update = function()
 
 			local lastState = {start = this.start, duration = this.duration, stacks = this.stacks, mode = this.mode}
-			
+
 			local spellName = GetMacroSpell(macroName)
 			local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura("player", spellName)
 
 			this.texture  = GetSpellTexture(spellName)
 
 			if auraName then
-				
+
 				this.mode = "ACTIVE"
 
 				local start = auraExpires - auraDuration
@@ -28,9 +28,9 @@ local macroMonitor = {
 				this.duration = auraDuration
 				this.stacks = auraCount
 				this.maxStacks = auraCount
-					
+
 			else
-				
+
 				this.mode = "INACTIVE"
 
 				local start, duration, enable, charges, maxCharges = GetSpellCooldown(spellName)
@@ -40,7 +40,7 @@ local macroMonitor = {
 				this.stacks = charges
 				this.maxStacks = maxCharges
 
-			end 
+			end
 
 			this:updated(lastState)
 
