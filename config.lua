@@ -274,7 +274,8 @@ ns.config.classConfig = {
 		["Subtlety"] = {
 			auras = {
 				player = {
-					5171		-- slice n dice
+					5171,		-- slice n dice
+					73651,		-- recuperate
 				},
 				target = {
 					2818,		-- deadly poison
