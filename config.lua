@@ -332,6 +332,7 @@ ns.config.classConfig = {
 				player = {
 					117828,		-- backdraft
 					104232,		-- rain of fire
+					114635, 	-- embertap hot
 				},
 			},
 		},
