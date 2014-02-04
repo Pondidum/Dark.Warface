@@ -11,6 +11,7 @@ local monitor = {
 			duration = 0,
 			stacks = 0,
 			maxStacks = 0,	
+			power = 0,
 			mode = "NONE",		--NONE, ACTIVE, INACTIVE
 			texture = nil,
 			listeners = {},
