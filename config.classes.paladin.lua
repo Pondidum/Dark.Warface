@@ -32,6 +32,8 @@ local config = {
 				{ type = "spell", args = 20271 },		-- judgement
 				{ type = "spell", args = 35395 },		-- crusader strike
 				{ type = "spell", args = 85256, controllers = { "powerGlow", "powerText" }, extra = {power = 3}},		-- templar's verdict
+				{ type = "spell", args = 122032 },		-- exorcism
+				{ type = "spell", args = 24275 },		-- hammer of wrath
 			},
 		},
 		auras = {
