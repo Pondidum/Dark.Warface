@@ -3,7 +3,7 @@
 ## Author: Darkend / DarkStorm / Zenedar / EU
 ## Version: 0.0.1
 ## Notes: Aura tracker
-## RequiredDeps: Dark.Core
+## RequiredDeps: Dark.Core, Dark.Unitframes
 
 config.lua
 config.displays.lua
@@ -31,6 +31,8 @@ alerts\controllers\stacksGlowController.lua
 alerts\controllers\activeVisibleController.lua
 alerts\controllers\nameTextController.lua
 alerts\controllers\healthGlowController.lua
+alerts\controllers\powerGlowController.lua
+alerts\controllers\powerTextController.lua
 
 auras\barView.lua
 auras\containerView.lua
