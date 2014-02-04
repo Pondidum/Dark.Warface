@@ -5,7 +5,19 @@
 ## Notes: Aura tracker
 ## RequiredDeps: Dark.Core, Dark.Unitframes
 
-config.lua
+config.classes.lua
+config.classes.deathknight.lua
+config.classes.druid.lua
+config.classes.hunter.lua
+config.classes.mage.lua
+config.classes.monk.lua
+config.classes.paladin.lua
+config.classes.priest.lua
+config.classes.rogue.lua
+config.classes.shaman.lua
+config.classes.warlock.lua
+config.classes.warrior.lua
+
 config.displays.lua
 
 initialise.lua
