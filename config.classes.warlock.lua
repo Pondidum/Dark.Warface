@@ -7,6 +7,7 @@ local config = {
 				117828,		-- backdraft
 				104232,		-- rain of fire
 				114635, 	-- embertap hot
+				113858,		-- darksoul: instability
 			},
 		},
 	},
