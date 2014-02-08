@@ -29,6 +29,7 @@ local config = {
 				30823,		-- shamanistic rage
 				108281,		-- ancestral guidance
 				108271,		-- astral shift
+				105697,		-- virmen's bite
 			},
 			target = {
 				17364		-- stormstrike
