@@ -20,7 +20,7 @@ local onSpecChanged = function()
 
 end
 
-events.register("PLAYER_LOGIN", onPlayerLogin)
+events.register("PLAYER_ENTERING_WORLD", onPlayerLogin)
 events.register("ACTIVE_TALENT_GROUP_CHANGED", onSpecChanged)
 
 Dark.warface = ns
