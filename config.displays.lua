@@ -19,7 +19,7 @@ ns.config.alertDisplays  = {
 		childView = "icon",
 
 		anchors = {
-			{"CENTER", "DarkuiFrame", "CENTER", 0, -115},
+			{"CENTER", UIParent, "CENTER", 0, -115},
 		},
 
 	},
@@ -34,7 +34,7 @@ ns.config.alertDisplays  = {
 		childView = "icon",
 
 		anchors = {
-			{"CENTER", "DarkuiFrame", "CENTER", 0, -150},
+			{"CENTER", "UIParent", "CENTER", 0, -150},
 		},
 
 	},
