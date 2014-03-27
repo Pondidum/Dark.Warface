@@ -28,7 +28,7 @@ local viewModel = {
 			local raidColor = colors.class[playerClass]
 
 			specConfig = config.classConfig[playerClass][playerSpec]
-			classColor = {raidColor.r, raidColor.g, raidColor.b}
+			classColor = raidColor
 
 		end
 
