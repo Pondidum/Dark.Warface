@@ -3,6 +3,7 @@ local config = ns.config
 
 local core = Dark.core
 local events = core.events.new()
+local colors = core.colors
 
 local checkWhiteList = function(config, spellID)
 	return config[spellID]
@@ -24,7 +25,7 @@ local viewModel = {
 
 			local _, playerClass = UnitClass("player")
 			local playerSpecID, playerSpec = GetSpecializationInfo(GetSpecialization())
-			local raidColor = RAID_CLASS_COLORS[playerClass]
+			local raidColor = colors.class[playerClass]
 
 			specConfig = config.classConfig[playerClass][playerSpec]
 			classColor = {raidColor.r, raidColor.g, raidColor.b}
