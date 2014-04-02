@@ -25,6 +25,7 @@ local config = {
 				138756,		-- blades of rentaki
 				120032,		-- dancing steel
 				146308,		-- assurance of consequence
+				148903,		-- haromm's talisman
 				114893,		-- stone bulwark
 				30823,		-- shamanistic rage
 				108281,		-- ancestral guidance
