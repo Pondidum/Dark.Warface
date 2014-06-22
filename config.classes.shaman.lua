@@ -39,7 +39,23 @@ local config = {
 				17364		-- stormstrike
 			}
 		},
-	}
+	},
+	["Elemental"] = {
+		alerts = {
+			cooldowns = {
+				{ type = "spell", 	args = 120668 },		--stormlash
+				{ type = "spell", 	args = 2894 },			--fire elemental
+				{ type = "spell", 	args = 114049 },		--ascendance
+				{ type = "item",	args = {10, 96230} },	--gloves, synapse springs (agility)
+			},
+			rotation = {
+				{ type = "spell", 	args = 117014},		-- elemental blast
+				{ type = "spell",	args = 51505 },		-- lava burst
+				{ type = "spell",	args = 8050 },		-- flameshock
+				{ type = "spell",	args = 324 , controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}},		-- earthshock
+			},
+		}
+	},
 }
 
 ns.config.classConfig.SHAMAN = config
