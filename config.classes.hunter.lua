@@ -4,8 +4,7 @@ local config = {
 	["Survival"] = {
 		alerts = {
 			cooldowns = {
-				{ type = "spell", 	args = 131894 },		-- a murder of crows
-				{ type = "spell", 	args = 120679 },		-- dire beast
+				{ type = "spell", 	args = 120697 },		-- lynx rush
 				{ type = "spell", 	args = 121818 },		-- stampede
 				{ type = "spell", 	args = 3045 },			-- rapid fire
 			},
