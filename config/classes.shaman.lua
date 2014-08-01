@@ -54,6 +54,13 @@ local config = {
 				{ type = "spell",	args = 8050 },		-- flameshock
 				{ type = "spell",	args = 324 , controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}},		-- earthshock
 			},
+		},
+		auras = {
+			player = {
+				105702
+			},
+			target = {},
+			focus = {}
 		}
 	},
 }
