@@ -18,6 +18,7 @@ local config = {
 		auras = {
 			player = {
 				20925,		-- sacred shield
+				114163,		-- eternal flame
 				86659, 		-- guardian of ancient kings
 				31850,		-- ardent defender
 				498,		-- divine protection
