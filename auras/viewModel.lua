@@ -14,7 +14,7 @@ local checkBlackList = function(config, spellID)
 end
 
 local viewModel = {
-	
+
 	new = function()
 
 		local containers = ns.auras.viewController.new()
@@ -24,10 +24,18 @@ local viewModel = {
 		local onSpecChanged = function()
 
 			local _, playerClass = UnitClass("player")
-			local playerSpecID, playerSpec = GetSpecializationInfo(GetSpecialization())
+			local spec = GetSpecialization()
+
+
 			local raidColor = colors.class[playerClass]
 
-			specConfig = config.classConfig[playerClass][playerSpec]
+			if spec then
+				local playerSpecID, playerSpec = GetSpecializationInfo()
+				specConfig = config.classConfig[playerClass][playerSpec]
+			else
+				specConfig = setmetatable({}, { __index = config.specBase })
+			end
+
 			classColor = raidColor
 
 		end
@@ -35,13 +43,13 @@ local viewModel = {
 		local onUnitAura = function(self, event, unit)
 
 			local container = containers.getView(unit)
-			
+
 			if container == nil then
 				return
 			end
 
 			containers.resetView(unit)
-			
+
 			local auraConfig = specConfig.auras[unit]
 
 			if auraConfig == nil then
@@ -58,7 +66,7 @@ local viewModel = {
 				if auraName and auraDuration and auraDuration ~= 0 and auraExpires and auraExpires ~= 0  then
 
 					if caster == "player" and check(auraConfig, spellID) then
-						
+
 						local view = container.getView(spellID)
 
 						view.setColor(unpack(classColor))
@@ -75,7 +83,7 @@ local viewModel = {
 				end
 
 			end
-			
+
 			table.sort(children, function(a, b) return a.remaining > b.remaining end)
 
 			container.children = children
@@ -98,7 +106,7 @@ local viewModel = {
 		end
 
 		local registerEvents = function()
-		
+
 			events.register("UNIT_AURA", onUnitAura)
 			events.register("PLAYER_TARGET_CHANGED", onTargetChanged)
 			events.register("PLAYER_FOCUS_CHANGED", onFocusChanged)
@@ -112,7 +120,7 @@ local viewModel = {
 
 			containers.createViews(config.auraDisplays)
 			onSpecChanged()
-			
+
 			registerEvents()
 
 		end
@@ -121,7 +129,7 @@ local viewModel = {
 			onSpecChanged()
 		end
 
-		return this 
+		return this
 
 	end
 }

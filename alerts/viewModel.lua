@@ -48,9 +48,16 @@ local viewModel = {
 		local onSpecChanged = function()
 
 			local dontCare, playerClass = UnitClass("player")
-			local playerSpecID, playerSpec = GetSpecializationInfo(GetSpecialization())
+			local spec = GetSpecialization()
 
-			specConfig = config.classConfig[playerClass][playerSpec]
+			if spec then
+				local playerSpecID, playerSpec = GetSpecializationInfo(spec)
+
+				specConfig = config.classConfig[playerClass][playerSpec]
+			else
+				specConfig = setmetatable({}, { __index = config.specBase })
+			end
+
 
 
 			containers.foreach(function(v)
