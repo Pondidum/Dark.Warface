@@ -30,7 +30,7 @@ local viewModel = {
 			local raidColor = colors.class[playerClass]
 
 			if spec then
-				local playerSpecID, playerSpec = GetSpecializationInfo()
+				local playerSpecID, playerSpec = GetSpecializationInfo(spec)
 				specConfig = config.classConfig[playerClass][playerSpec]
 			else
 				specConfig = setmetatable({}, { __index = config.specBase })
