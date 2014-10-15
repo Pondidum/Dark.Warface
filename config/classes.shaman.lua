@@ -10,7 +10,7 @@ local config = {
 				{ type = "spell", 	args = 16166 },			--elemental mastery
 			},
 			rotation = {
-				{ type = "spell", 	args = 8042 },			--earthshock
+				{ type = "spell", 	args = 8056 },			--frost shock
 				{ type = "spell", 	args = 60103 },			--lavalash
 				{ type = "spell", 	args = 17364 },			--stormstrike
 				{ type = "macro", 	args = "EnhUnleash", },	--unleash/flameshock macro
