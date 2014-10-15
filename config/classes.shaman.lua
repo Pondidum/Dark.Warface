@@ -4,11 +4,9 @@ local config = {
 	["Enhancement"] = {
 		alerts = {
 			cooldowns = {
-				{ type = "spell", 	args = 120668 },		--stormlash
 				{ type = "spell", 	args = 2894 },			--fire elemental
 				{ type = "spell", 	args = 51533 },			--feral spirit
 				{ type = "spell", 	args = 114049 },		--ascendance
-				{ type = "item",	args = {10, 96228} },	--gloves, synapse springs (agility)
 				{ type = "spell", 	args = 16166 },			--elemental mastery
 			},
 			rotation = {
@@ -43,10 +41,8 @@ local config = {
 	["Elemental"] = {
 		alerts = {
 			cooldowns = {
-				{ type = "spell", 	args = 120668 },		--stormlash
 				{ type = "spell", 	args = 2894 },			--fire elemental
 				{ type = "spell", 	args = 114049 },		--ascendance
-				{ type = "item",	args = {10, 96230} },	--gloves, synapse springs (agility)
 			},
 			rotation = {
 				{ type = "spell", 	args = 117014},		-- elemental blast
