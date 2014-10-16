@@ -33,9 +33,7 @@ local config = {
 			},
 			cooldowns = {
 				{ type = "spell",	args = 47568 },			-- Empower Rune Weapon
-				{ type = "spell",	args = 49016 },			-- unholy frenzy
 				{ type = "spell",	args = 20572 },			-- blood fury (attack power)
-				{ type = "item",	args = {10, 96229} },	-- gloves, synapse springs (strength)
 				{ type = "spell",	args = 49206 },			-- summon gargoyle
 			}
 		},
@@ -72,7 +70,7 @@ local config = {
 				{ type = "item",	args = {10, 96229} },	-- gloves, synapse springs (strength)
 			},
 		},
-		auras = { 
+		auras = {
 			player = {
 				105706,		-- Potion of Mogu Power
 				48792,		-- ibf
