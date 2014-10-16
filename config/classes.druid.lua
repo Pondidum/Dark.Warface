@@ -22,9 +22,7 @@ local config = {
 	["Feral"] = {
 		alerts = {
 			rotation = {
-				--{ type = "spell",	args = 127538 },	-- savage roar
 				{ type = "spell",	args = 5221 },		-- shred
-				{ type = "spell",	args = 33876 },		-- mangle
 				{ type = "spell",	args = 1822 },		-- rake
 				{ type = "spell",	args = 1079 },		-- rip
 			},
