@@ -32,7 +32,6 @@ local config = {
 			cooldowns = {
 				{ type = "spell", args = 114157 },		-- execution sentence
 				{ type = "spell", args = 31884 },		-- avenging wrath
-				{ type = "spell", args = 86698 },		-- guardian of ancient kings
 			},
 			rotation = {
 				{ type = "spell", args = 20271 },		-- judgement
