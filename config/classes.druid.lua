@@ -22,13 +22,14 @@ local config = {
 	["Feral"] = {
 		alerts = {
 			rotation = {
+				{ type = "spell",	args = 5217 },		-- tigers fury
 				{ type = "spell",	args = 5221 },		-- shred
 				{ type = "spell",	args = 1822 },		-- rake
 				{ type = "spell",	args = 1079 },		-- rip
 			},
 			cooldowns = {
 				{ type = "spell",	args = 135700 },	-- clearcasting
-				{ type = "spell",	args = 5217 },		-- tigers fury
+				{ type = "spell",	args = 102543 },	-- incarnation
 				{ type = "spell",	args = 26297 },		-- berserking (racial)
 				{ type = "spell",	args = 106951 },	-- berserk
 			},
@@ -37,7 +38,8 @@ local config = {
 			player = {
 				26297,		-- berserking
 				69369, 		-- predatory swiftness
-				127538,		-- savage roar
+				174544,		-- savage roar (from stealth)
+				52610,		-- savage roar
 				108381,		-- dream of cenarius
 				139120,		-- re-origination
 			},
