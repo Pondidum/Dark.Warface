@@ -6,6 +6,8 @@ local config = {
 			player = {
 				5171,		-- slice n dice
 				73651,		-- recuperate
+				137573,		-- burst of speed
+				2983,		-- sprint
 			},
 			target = {
 				2818,		-- deadly poison
