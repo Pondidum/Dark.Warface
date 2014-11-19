@@ -35,6 +35,8 @@ local config = {
 				105706,		-- Potion of Mogu Power
 				138759,		-- feather
 				48792,		-- ibf
+				96268,		-- death's advance
+				114868,		-- glyph of swift death
 
 			},
 			pet = {
