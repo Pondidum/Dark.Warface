@@ -24,19 +24,6 @@ local config = {
 		},
 	},
 	["Unholy"] = {
-		alerts = {
-			rotation = {
-				{ type = "spell", 	args = 130736, 	controllers = { "healthGlow", "cdAndActiveText" }, 	extra = { unit="target", percent=45}}, 	-- soul reaper (unholy)
-				{ type = "spell", 	args = 114851,	controllers = { "stacksGlow", "stacksText" }, 		extra = {stacks = 5}}, --blood tap
-				{ type = "spell", 	args = 81340, }, 		-- sudden doom
-				{ type = "spell", 	args = 91342,	controllers = { "stacksGlow", "stacksText" }, 		extra = {stacks = 5}}, --shadow infusion
-			},
-			cooldowns = {
-				{ type = "spell",	args = 47568 },			-- Empower Rune Weapon
-				{ type = "spell",	args = 20572 },			-- blood fury (attack power)
-				{ type = "spell",	args = 49206 },			-- summon gargoyle
-			}
-		},
 		auras = {
 			player = {
 				53365,		-- unholy strength (rune of the fallen crusader)
