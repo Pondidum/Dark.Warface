@@ -2,21 +2,6 @@ local addon, ns = ...
 
 local config = {
 	["Enhancement"] = {
-		alerts = {
-			cooldowns = {
-				{ type = "spell", 	args = 2894 },			--fire elemental
-				{ type = "spell", 	args = 51533 },			--feral spirit
-				{ type = "spell", 	args = 114049 },		--ascendance
-				{ type = "spell", 	args = 16166 },			--elemental mastery
-			},
-			rotation = {
-				{ type = "spell", 	args = 8056 },			--frost shock
-				{ type = "spell", 	args = 60103 },			--lavalash
-				{ type = "spell", 	args = 17364 },			--stormstrike
-				{ type = "macro", 	args = "EnhUnleash", },	--unleash/flameshock macro
-				{ type = "spell", 	args = 53817,		 controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}}, --maelstrom
-			},
-		},
 		auras = {
 			player = {
 				73683,		-- unleash flame
