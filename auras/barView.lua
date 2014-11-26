@@ -10,11 +10,12 @@ local barView = {
 
 		local container = CreateFrame("Frame", name, parent)
 		container:SetHeight(20)
+		container:SetAlpha(0.5)
 		style.addBackground(container)
 		style.addShadow(container)
 
 		container.remaining = 0
-		
+
 		local icon = container:CreateTexture()
 		icon:SetPoint("TOPLEFT")
 		icon:SetPoint("BOTTOMLEFT")
