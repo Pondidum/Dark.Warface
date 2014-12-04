@@ -10,7 +10,7 @@ local barView = {
 
 		local container = CreateFrame("Frame", name, parent)
 		container:SetHeight(20)
-		container:SetAlpha(0.5)
+		container:SetAlpha(0.8)
 		style.addBackground(container)
 		style.addShadow(container)
 
@@ -36,22 +36,22 @@ local barView = {
 		name:SetPoint("BOTTOMLEFT", 5, 0)
 		name:SetPoint("RIGHT", bar, "CENTER", 0, 0)
 
-		container.setName = function(value) 
+		container.setName = function(value)
 			name:SetText(value)
 		end
 
-		container.setIcon = function(value) 
+		container.setIcon = function(value)
 			icon:SetTexture(value)
 		end
 
 		container.setStacks = function(value)
 
-			if value == 0 then 
+			if value == 0 then
 				stacks:SetText('')
 			else
 				stacks:SetText(value)
 			end
-				
+
 		end
 
 		container.setColor = function(r, g, b)
@@ -63,7 +63,7 @@ local barView = {
 			container.remaining = duration - (GetTime() - start)
 		end
 
-		bar:SetScript("OnHide", function(s, e) 
+		bar:SetScript("OnHide", function(s, e)
 			container:Hide()
 		end)
 
