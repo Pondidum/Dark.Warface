@@ -40,8 +40,8 @@ local config = {
 				69369, 		-- predatory swiftness
 				174544,		-- savage roar (from stealth)
 				52610,		-- savage roar
-				108381,		-- dream of cenarius
 				139120,		-- re-origination
+				145152,		-- bloodtalons
 			},
 			target = {
 				58180		-- infected wounds
