@@ -14,6 +14,7 @@ local config = {
 				108281,		-- ancestral guidance
 				108271,		-- astral shift
 				105697,		-- virmen's bite
+				159675,		-- mark of warsong,
 			},
 			target = {
 				17364		-- stormstrike
