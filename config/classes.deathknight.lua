@@ -46,18 +46,6 @@ local config = {
 		},
 	},
 	["Frost"] = {
-		alerts = {
-			rotation = {
-				{ type = "spell", 	args = 130736, 	controllers = { "healthGlow", "cdAndActiveText" }, 	extra = { unit="target", percent=45}}, 	-- soul reaper (unholy)
-				{ type = "spell", 	args = 114851,	controllers = { "stacksGlow", "stacksText" }, 		extra = {stacks = 5}}, --blood tap
-				{ type = "spell", 	args = 51124,	},		-- killing machine
-				{ type = "spell", 	args = 59052,	},		-- rime
-			},
-			cooldowns = {
-				{ type = "spell",	args = 51271 },			-- pillar of frost
-				{ type = "spell",	args = 77575 },			-- outbreak
-			},
-		},
 		auras = {
 			player = {
 				105706,		-- Potion of Mogu Power
