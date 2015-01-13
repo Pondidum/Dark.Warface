@@ -56,7 +56,6 @@ local config = {
 			cooldowns = {
 				{ type = "spell",	args = 51271 },			-- pillar of frost
 				{ type = "spell",	args = 77575 },			-- outbreak
-				{ type = "item",	args = {10, 96229} },	-- gloves, synapse springs (strength)
 			},
 		},
 		auras = {
