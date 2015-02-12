@@ -4,7 +4,6 @@ local core = Dark.core
 local events = core.events.new()
 
 local auras = ns.auras.viewModel.new()
-local alerts = ns.alerts.viewModel.new()
 
 local initialised = false
 local onPlayerLogin = function()
@@ -14,7 +13,6 @@ local onPlayerLogin = function()
 	end
 
 	auras.run()
-	alerts.run()
 
 	initialised = true
 
@@ -23,7 +21,6 @@ end
 local onSpecChanged = function()
 
 	auras.specChanged()
-	alerts.specChanged()
 
 end
 

@@ -22,30 +22,6 @@ config\displays.lua
 
 initialise.lua
 
-alerts\alertView.lua
-alerts\containerView.lua
-alerts\controllerFactory.lua
-alerts\viewController.lua
-alerts\monitorFactory.lua
-alerts\viewModel.lua
-
-alerts\monitor.lua
-alerts\monitors\itemMonitor.lua
-alerts\monitors\macroMonitor.lua
-alerts\monitors\spellMonitor.lua
-alerts\monitors\totemMonitor.lua
-alerts\monitors\auraMonitor.lua
-
-alerts\controllers\cdAndActiveTextController.lua
-alerts\controllers\stacksTextController.lua
-alerts\controllers\activeGlowController.lua
-alerts\controllers\stacksGlowController.lua
-alerts\controllers\activeVisibleController.lua
-alerts\controllers\nameTextController.lua
-alerts\controllers\healthGlowController.lua
-alerts\controllers\powerGlowController.lua
-alerts\controllers\powerTextController.lua
-
 auras\barView.lua
 auras\containerView.lua
 auras\viewController.lua
