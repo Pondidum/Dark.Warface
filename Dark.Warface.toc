@@ -22,6 +22,8 @@ config\displays.lua
 
 initialise.lua
 
+cooldownBar.lua
+
 auras\barView.lua
 auras\containerView.lua
 auras\viewController.lua
