@@ -143,6 +143,12 @@ local init = function()
 	ns.auras = {}
 	ns.alerts = {}
 
+	local dark = Darker
+
+	ns.lib = {
+		style = dark.style
+	}
+
 end
 
 init()

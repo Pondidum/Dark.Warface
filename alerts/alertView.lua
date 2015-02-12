@@ -1,7 +1,8 @@
 local addon, ns = ...
 local core = Dark.core
 local ui = core.ui
-local style = core.style
+
+local style = ns.lib.style
 
 local alertView = {
 
@@ -14,7 +15,7 @@ local alertView = {
 		local cooldown = _G[name.."Cooldown"]
 		local text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
 
-		core.style.actionButton(button)
+		style:actionButton(button)
 
 		button:RegisterForClicks(nil);
 		button:EnableMouse(false)
