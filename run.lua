@@ -1,30 +1,32 @@
 local addon, ns = ...
 
-local core = Dark.core
-local events = core.events.new()
+local class = ns.lib.class
+local events = ns.lib.events
 
-local auras = ns.auras.viewModel.new()
+local warface = class:extend({
 
-local initialised = false
-local onPlayerLogin = function()
+	events = {
+		"PLAYER_ENTERING_WORLD",
+		"ACTIVE_TALENT_GROUP_CHANGED",
+	},
 
-	if initialised then
-		return
-	end
+	ctor = function(self)
+		self:include(events)
 
-	auras.run()
+		self.auras = ns.auras.viewModel.new()
+		Dark.warface = ns
 
-	initialised = true
+	end,
 
-end
+	PLAYER_ENTERING_WORLD = function(self)
+		self:unregister("PLAYER_ENTERING_WORLD")
 
-local onSpecChanged = function()
+		self.auras.run()
+	end,
 
-	auras.specChanged()
+	ACTIVE_TALENT_GROUP_CHANGED = function(self)
+		self.auras.specChanged()
+	end,
+})
 
-end
-
-events.register("PLAYER_ENTERING_WORLD", onPlayerLogin)
-events.register("ACTIVE_TALENT_GROUP_CHANGED", onSpecChanged)
-
-Dark.warface = ns
+warface:new()

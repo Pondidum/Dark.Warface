@@ -146,8 +146,9 @@ local init = function()
 	local dark = Darker
 
 	ns.lib = {
-		class = dark.class,
 		style = dark.style,
+		events = dark.events,
+		class = dark.class,
 		media = dark.media
 	}
 
