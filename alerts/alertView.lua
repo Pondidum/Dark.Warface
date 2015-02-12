@@ -1,8 +1,7 @@
 local addon, ns = ...
-local core = Dark.core
-local ui = core.ui
 
 local style = ns.lib.style
+local fonts = ns.lib.media.fonts
 
 local alertView = {
 
@@ -13,7 +12,7 @@ local alertView = {
 		local glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
 		local icon  = _G[name.."Icon"]
 		local cooldown = _G[name.."Cooldown"]
-		local text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
+		local text = fonts:create(button, fonts.normal, 18)
 
 		style:actionButton(button)
 
