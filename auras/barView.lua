@@ -3,8 +3,7 @@ local addon, ns = ...
 local class = ns.lib.class
 local style = ns.lib.style
 local fonts = ns.lib.media.fonts
-
-local core = Dark.core
+local textures = ns.lib.media.textures
 
 local barView = {
 
@@ -28,7 +27,7 @@ local barView = {
 		stacks:SetJustifyH("CENTER")
 
 		local bar = ns.cooldownBar:new("$parentBar", container)
-		bar:setTexture(core.textures.normal)
+		bar:setTexture(textures.normal)
 		bar:setPoint("BOTTOMLEFT", icon, "BOTTOMRIGHT", 0, 0)
 		bar:setPoint("TOPRIGHT", container, "TOPRIGHT", 0, 0)
 
