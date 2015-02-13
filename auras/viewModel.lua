@@ -2,8 +2,8 @@ local addon, ns = ...
 local config = ns.config
 
 local core = Dark.core
-local events = core.events.new()
-local colors = core.colors
+--local events = core.events.new()
+local colors = ns.lib.media.colors
 
 local checkWhiteList = function(config, spellID)
 	return config[spellID]
