@@ -149,7 +149,8 @@ local init = function()
 		style = dark.style,
 		events = dark.events,
 		class = dark.class,
-		media = dark.media
+		media = dark.media,
+		layout = dark.layoutEngine,
 	}
 
 end

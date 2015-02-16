@@ -1,46 +1,64 @@
 local addon, ns = ...
 
-local core = Dark.core
-local layout = core.layout
+local class = ns.lib.class
+local layout = ns.lib.layout
 
-local containerView = {
+local containerView = class:extend({
 
-	new = function(unitName)
+	ctor = function(self, unitName)
 
-		local container = CreateFrame("Frame", "DarkWarfaceAura" .. unitName, UIParent)
-		layout.init(container, {
-			type = "STACK",
+		self.subViews = {}
+		self.unitName = unitName
+
+		self.frame = CreateFrame("Frame", "DarkWarfaceAura" .. unitName, UIParent)
+		self.engine = layout:new(self.frame, {
+			layout = "vertical",
 			origin = "BOTTOM",
-			autosize = true,
+			itemSize = 20,
+			itemSpacing = 2,
+			autosize = "y"
 		})
 
-		local subViews = {}
+	end,
 
-		container.getView = function(id)
+	setChildren = function(self, children)
 
-			if subViews[id] then
-				return subViews[id]
-			end
+		local engine = self.engine
 
-			local v = ns.auras.barView.new("DarkWarfaceAura" ..unitName .."Bar"..id, container)
-
-			subViews[id] = v
-			return v
-
+		for i,child in ipairs(children) do
+			engine:addChild(child)
 		end
 
-		container.resetViews = function()
-			
-			for name, view in pairs(subViews) do
-				view.setCooldown(0, 0)
-			end
+		engine:performLayout()
 
+		for i,child in ipairs(children) do
+			child:SetPoint("LEFT")
+			child:SetPoint("RIGHT")
+		end
+	end,
+
+	getView = function(self, id)
+
+		if not self.subViews[id] then
+			self.subViews[id] = ns.auras.barView.new("$parentBar"..id, self.frame)
 		end
 
-		return container
+		return self.subViews[id]
 
-	end
+	end,
 
-}
+	resetViews = function(self)
+
+		for name, view in pairs(self.subViews) do
+			view.setCooldown(0, 0)
+		end
+
+		self.engine:clearChildren()
+	end,
+
+	setPoint = function(self, ...)
+		self.frame:SetPoint(...)
+	end,
+})
 
 ns.auras.containerView = containerView

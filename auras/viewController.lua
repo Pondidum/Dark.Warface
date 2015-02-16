@@ -1,7 +1,7 @@
 local addon, ns = ...
 
 local viewController = {
-	
+
 	new = function()
 
 		local this = {}
@@ -10,11 +10,11 @@ local viewController = {
 		this.createViews = function(displays)
 
 			for unit, displayConfig in pairs(displays) do
-				
-				local container = ns.auras.containerView.new(unit)
+
+				local container = ns.auras.containerView:new(unit)
 
 				for i, anchorConfig in pairs(displayConfig.anchors) do
-					container:SetPoint(unpack(anchorConfig))
+					container:setPoint(unpack(anchorConfig))
 				end
 
 				views[unit] = container
@@ -32,19 +32,19 @@ local viewController = {
 			local view = views[unit]
 
 			if view then
-				view.resetViews()
-				view.children = {}
-				view.performLayout()
+				view:resetViews()
+				-- view.children = {}
+				-- view.performLayout()
 			end
 
 		end
 
 		this.resetAllViews = function()
-	
+
 			for unit, container in pairs(views) do
 				this.resetView(unit)
 			end
-			
+
 		end
 
 		return this

@@ -92,7 +92,7 @@ local viewModel = class:extend({
 
 				if caster == "player" and check(auraConfig, spellID) then
 
-					local view = container.getView(spellID)
+					local view = container:getView(spellID)
 
 					view.setColor(unpack(self.classColor))
 					view.setName(auraName)
@@ -111,8 +111,7 @@ local viewModel = class:extend({
 
 		table.sort(children, function(a, b) return a.remaining > b.remaining end)
 
-		container.children = children
-		container.performLayout()
+		container:setChildren(children)
 
 	end
 
