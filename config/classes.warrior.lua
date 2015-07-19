@@ -18,6 +18,13 @@ local config = {
 				12880,		-- enrage
 			},
 		},
+	},
+	["Fury"] = {
+		auras = {
+			player = {
+				12880,		-- enrage
+			},
+		},
 	}
 }
 
