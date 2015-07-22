@@ -5,16 +5,13 @@ local config = {
 		auras = {
 			player = {
 				73683,		-- unleash flame
-				138756,		-- blades of rentaki
-				120032,		-- dancing steel
-				146308,		-- assurance of consequence
-				148903,		-- haromm's talisman
 				114893,		-- stone bulwark
 				30823,		-- shamanistic rage
 				108281,		-- ancestral guidance
 				108271,		-- astral shift
-				105697,		-- virmen's bite
+				156423,		-- draenic agility potion
 				159675,		-- mark of warsong,
+				118472		-- unleashed fury
 			},
 			target = {
 				17364		-- stormstrike
@@ -36,13 +33,6 @@ local config = {
 				{ type = "spell",	args = 8050 },		-- flameshock
 				{ type = "spell",	args = 324 , controllers = { "stacksGlow", "stacksText" }, extra = {stacks = 5}},		-- earthshock
 			},
-		},
-		auras = {
-			player = {
-				105702
-			},
-			target = {},
-			focus = {}
 		}
 	},
 }
